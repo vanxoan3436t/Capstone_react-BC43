@@ -7,6 +7,7 @@
 @import '../scss/layouts/register';
 @import '../scss/layouts/login';
 
+//những phần này em để tạm ở đây
 h2 {
     font-weight: $fw-normal;
     font-size: $fs-4xl ;
@@ -29,9 +30,6 @@ h2 {
     height: 54px;
     background: rgba(33, 33, 33, 0.08);
     border-radius: 4px 4px 0px 0px;
-
-
-    //    padding:  16px, 12px, 14px, 14px;
 }
 
 
@@ -40,3 +38,4 @@ h2 {
         background-color: #6200EE;
         color: #fff;
 }
+
