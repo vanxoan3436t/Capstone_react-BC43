@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&family=Roboto:wght@400;500&display=swap');
 @import './base/customize';
+@import './helpers/mixin';
+@import './helpers/variables';
+@import '../scss/layouts/carts';
 @import '../../assets/scss/layouts/header';
 @import '../scss/layouts/register';
 @import '../scss/layouts/login';
@@ -18,6 +21,7 @@ h2 {
 
     right: 31.17%;
     top: 62.83%;
+    cursor: pointer;
 }
 
 .form-control {

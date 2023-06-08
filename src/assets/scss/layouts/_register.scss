@@ -13,9 +13,16 @@
                     @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
                     margin-left: 6.67px;
                     margin-bottom: 10px;
+
                     &:nth-child(3) {
                         margin-top: 5px;
                     }
+
+                }
+                .p-err {
+                    margin-left: 0px;
+                    width: 443px;
+                    height: 54px;
                 }
 
             }
@@ -31,7 +38,7 @@
                         margin-right: 36px;
                     }
 
-                    input {                
+                    input {
                         margin-right: 36px;
                         cursor: pointer;
                     }
@@ -40,7 +47,7 @@
                         transform: translate(-4vw, 2vw);
 
                     }
-                }            
+                }
             }
         }
     }

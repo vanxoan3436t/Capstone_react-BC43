@@ -1,5 +1,7 @@
 //rxslice
 import { createSlice } from '@reduxjs/toolkit'
+import { http } from '../../util/config';
+
 
 const initialState = {
   number: 1
