@@ -1,2 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&display=swap');
-@import './base/customize'
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&family=Roboto:wght@400;500&display=swap');
+@import './base/customize';
+@import '../../assets/scss/layouts/header';
+@import '../scss/layouts/register';
+@import '../scss/layouts/login';
+
+h2 {
+    font-weight: $fw-normal;
+    font-size: $fs-4xl ;
+    line-height: $lh-c4;
+}
+
+.fa-eye {
+    color: $text-c1-dark;
+    width: 22px;
+    height: 15px;
+    position: absolute;
+
+    right: 31.17%;
+    top: 62.83%;
+}
+
+.form-control {
+    width: 443px;
+    height: 54px;
+    background: rgba(33, 33, 33, 0.08);
+    border-radius: 4px 4px 0px 0px;
+
+
+    //    padding:  16px, 12px, 14px, 14px;
+}
+
+
+.btn-main {
+        margin-top: 48px;
+        background-color: #6200EE;
+        color: #fff;
+}

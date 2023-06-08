@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .container {
@@ -22,3 +22,31 @@ li {
 p{
   margin-bottom: 0px;
 }
+
+//<SidebarJS header>
+.closeBar,.openBar {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    transform: translateY(-50%);
+  font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .none{
+      display: none;
+  }
+  
+  .btn_navbar {
+      position: relative;
+      z-index: 10;
+      width: 20%;
+      display: none;
+    }
+  
+    .changeBar {
+      transform: translate(2%,16%);
+      display: none;
+    }
+  //</SidebarJS header>
+

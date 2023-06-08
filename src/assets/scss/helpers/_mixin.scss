@@ -1,0 +1,41 @@
+@import '../helpers/variables';
+
+@mixin text($fz, $fw, $color, $lh) {
+    font-size: $fz;
+    font-weight: $fw;
+    color: $color;
+    line-height: $lh;
+}
+
+//dùng cho phần layout có backround là 1 bức ảnh
+@mixin bgIMG($repeat, $position, $size) {
+    background-repeat: $repeat;
+    background-position: $position;
+    background-size: $size;
+}
+
+// button 
+@mixin button($fz, $fw, $c, $bg, $bd, $br, $p) {
+    font-size: $fz;
+    font-weight: $fw;
+    color: $c;
+    background: $bg;
+    border: $bd;
+    border-radius: $br;
+    padding: $p;
+    cursor: pointer;
+}
+
+@mixin elementDistance ($mt, $ms, $w, $h) {
+    margin-top: $mt ;
+    margin-left: $ms;
+    width: $w;
+    height: $h;
+}
+
+@mixin elementDiv($d-i-b, $w, $h) {
+    display: $d-i-b;
+    width: $w ;
+    height: $h;
+    // background-color: $bgcl ;
+}

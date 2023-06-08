@@ -1,0 +1,47 @@
+.form-register {
+    .row {
+        font-family: 'Roboto', sans-serif;
+        margin-top: 52px;
+        margin-bottom: 77px;
+
+        .col-6 {
+            .form-group {
+                margin-bottom: 65px;
+                position: relative;
+
+                p {
+                    @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
+                    margin-left: 6.67px;
+                    margin-bottom: 10px;
+                    &:nth-child(3) {
+                        margin-top: 5px;
+                    }
+                }
+
+            }
+
+            &:nth-child(2) {
+
+                .gender {
+                    margin-top: 94px;
+
+                    span {
+                        width: 59px;
+                        height: 30.69px;
+                        margin-right: 36px;
+                    }
+
+                    input {                
+                        margin-right: 36px;
+                        cursor: pointer;
+                    }
+
+                    label {
+                        transform: translate(-4vw, 2vw);
+
+                    }
+                }            
+            }
+        }
+    }
+}

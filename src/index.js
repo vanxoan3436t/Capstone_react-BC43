@@ -14,7 +14,6 @@ import './assets/scss/index.scss'
 import { Provider } from 'react-redux';
 import { store } from './redux/configStore';
 
-
 import { createBrowserHistory } from 'history';
 export const history = createBrowserHistory();
 
@@ -38,4 +37,3 @@ root.render(
         </HistoryRouter>
     </Provider>
 );
-
