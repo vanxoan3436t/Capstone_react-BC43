@@ -34,11 +34,12 @@
                                     width: 33px;
                                     height: 32px;
                                     margin-right: 5.6px;
+
                                     @media screen and (max-width:767.98px) {
                                         width: 25px;
                                         margin-right: 0px;
                                     }
-                                  
+
                                 }
 
                                 @media screen and (max-width:767.98px) {
@@ -106,7 +107,7 @@
 
                                 @media screen and (max-width:576px) {
                                     margin-bottom: 10px;
-
+                                    text-align: center;
                                 }
 
                                 a {

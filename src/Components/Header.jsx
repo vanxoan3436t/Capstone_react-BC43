@@ -48,7 +48,7 @@ export default function Header() {
                 <NavLink to="/">Woman</NavLink>
               </li>
               <li>
-                <NavLink to="/">Kid</NavLink>
+                <NavLink to="/profile">Kid</NavLink>
               </li>
               <li>
                 <NavLink to="/">Sport</NavLink>

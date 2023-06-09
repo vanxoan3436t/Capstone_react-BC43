@@ -44,20 +44,20 @@ const Register = () => {
       <div className="row">
         <div className="col-6">
           <div className="form-group">
-            <p>Email</p>
+            <p >Email</p>
             <input className='form-control' type="email" placeholder='email' name='email' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur} />
             {registerFrm.errors.email && <p className='p-err alert alert-danger'>{registerFrm.errors.email}</p>}
           </div>
 
           <div className="form-group mt-2">
-            <p>Password</p>
+            <p >Password</p>
             <input className='form-control' type="password" placeholder='password' name='password' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
             {registerFrm.errors.password && <p className='p-err alert alert-danger'>{registerFrm.errors.password}</p>}
             <i className="fa-solid fa-eye"></i>
           </div>
 
           <div className="form-group mt-2">
-            <p>Password confirm</p>
+            <p >Password confirm</p>
             <input className='form-control' name='passwordConfirm' type="password" placeholder='password confirm' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
             {registerFrm.errors.passwordConfirm && <p className='p-err alert alert-danger'>{registerFrm.errors.passwordConfirm}</p>}
             <i className="fa-solid fa-eye"></i>
@@ -66,7 +66,7 @@ const Register = () => {
 
         <div className="col-6">
           <div className="form-group">
-            <p>Name</p>
+            <p >Name</p>
             <input className='form-control' name='name' type="text" placeholder='name' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
             {registerFrm.errors.name && <p className='p-err alert alert-danger'>{registerFrm.errors.name}</p>}
           </div>
@@ -85,7 +85,6 @@ const Register = () => {
               <input className="form-check-input" id="gender2" name="gender" type="radio" defaultValue={false} onInput={registerFrm.handleChange} />
               <label htmlFor="gender2">Female</label>
             </div>
-
 
           </div>
           <div className="form-group ">

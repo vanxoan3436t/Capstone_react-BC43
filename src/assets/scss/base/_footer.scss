@@ -1,0 +1,14 @@
+.footer {
+    .row {}
+
+    .copy-right {
+        background: $bg-c2-dark;
+        height: 74px;
+
+        p {
+            @include text($fs-2xl, $fw-normal, $text-c0-dark, $lh-c2);
+            padding-top: 26px;
+            text-align: center;
+        }
+    }
+}
