@@ -1,0 +1,153 @@
+@import '../helpers/variables';
+
+.profile {
+    h2 {
+        color: $text-c0-white;
+        width: 575px;
+        height: 74px;
+        background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+
+        @media screen and (max-width:575.98px) {
+            border-radius: 5px;
+            width: 180px;
+        }
+    }
+
+    .row {
+
+        .profile-img {
+            margin-top: 26px;
+
+            img {
+                width: 100%;
+                border-radius: 50%;
+
+                @media screen and (max-width:991.98px) {
+                    margin-left: 4vw;
+
+                }
+
+                @media screen and (max-width:767.98px) {
+                    margin-left: 25vw;
+                    width: 50%;
+                }
+            }
+        }
+
+        .profile-form {
+            margin-top: 31px;
+
+            form {
+                .row {
+                    div {
+
+                        .form-group {
+                            width: 443px;
+                            margin-bottom: 65px;
+
+                            @media screen and (max-width:991.98px) {
+                                margin-left: 10vw;
+                            }
+
+                            p {
+                                @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
+                                margin-left: 6.67px;
+                                margin-bottom: 10px;
+                            }
+
+                            .form-control {
+                                @media screen and (max-width:767.98px) {
+                                    width: 560px;
+                                }
+
+                                @media screen and (max-width:575.98px) {
+                                    width: 420px;
+                                }
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            .form-group:nth-child(2) {
+                                margin-bottom: 30px;
+                            }
+
+                            .gender {
+                                span {
+                                    @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
+                                    width: 59px;
+                                    height: 30.69px;
+                                    margin: 0px 36px 0 15px;
+                                }
+
+                                .d-flex {
+                                    input {
+                                        cursor: pointer;
+                                    }
+
+                                    label {
+                                        transform: translate(-1.2vw, 2vw);
+                                    }
+                                }
+
+                                .btn-main {
+                                    margin-top: 0px;
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    .profile-body {
+
+        div {
+            display: flex;
+
+            h3 {
+                width: 277px;
+                border: 1px solid #DEDDDC;
+                border-top: none;
+                margin-bottom: 75px;
+
+                span {
+                    width: 200px;
+                    height: 39px;
+                    margin-left: 32px;
+                    cursor: pointer;
+                    @include text($fs-32, $fw-normal, $text-c0-dark, $lh-c7);
+
+                    &:hover {
+                        color: $text-pink;
+                    }
+                }
+
+                &:nth-child(2) {
+                    width: 320px;
+
+                    span {
+                        width: 141px;
+                    }
+                }
+            }
+        }
+
+        table {
+            margin-left: 102px;
+            margin-bottom: 76px;
+            text-align: center;
+
+            @media screen and (max-width:1198.98px) {
+                margin-left: 0px;
+            }
+
+            thead {
+                background-color: $bg-c2-dark;
+
+            }
+        }
+    }
+}

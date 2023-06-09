@@ -3,17 +3,24 @@
 @import './helpers/mixin';
 @import './helpers/variables';
 @import '../scss/layouts/carts';
-@import '../../assets/scss/layouts/header';
+@import '../scss/base/header';
 @import '../scss/layouts/register';
 @import '../scss/layouts/login';
-
+@import '../scss/layouts/profile';
+@import '../scss/base/footer';
 //những phần này em để tạm ở đây
 h2 {
     font-weight: $fw-normal;
     font-size: $fs-4xl ;
     line-height: $lh-c4;
 }
-
+.btn-main {
+    width: 121px;
+height: 48px;
+    background-color: #6200EE;
+    color: #fff;
+    border-radius: 50px;
+}
 .fa-eye {
     color: $text-c1-dark;
     width: 22px;
@@ -23,6 +30,17 @@ h2 {
     right: 31.17%;
     top: 62.83%;
     cursor: pointer;
+
+    @media screen and (max-width:1198.98px) {
+        right: 17.17%;
+    }
+
+    @media screen and (max-width: 767.98px) {
+        right: -87.83%;
+    }
+    @media screen and (max-width: 767.98px) {
+        right: -94.83%
+    }
 }
 
 .form-control {
@@ -31,11 +49,3 @@ h2 {
     background: rgba(33, 33, 33, 0.08);
     border-radius: 4px 4px 0px 0px;
 }
-
-
-.btn-main {
-        margin-top: 48px;
-        background-color: #6200EE;
-        color: #fff;
-}
-
