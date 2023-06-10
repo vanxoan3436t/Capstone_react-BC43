@@ -1,9 +1,32 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { USER_LOGIN, clearStorage } from '../util/config';
 
 export default function Header() {
-  return (
+  const { userLogin } = useSelector(state => state.userReducer);
+  const renderLoginLink = () => {
+    if (userLogin.email !== '') {
+      return <>
+        <div className="login-in">
+          <NavLink to="/profile">Profile</NavLink>
+        </div>
+        <div className='logout'>
+          <NavLink className="nav-link" onClick={() => {
+            // khi ấn vào nút Logout thì sẽ xoá data ở local đi style={{ cursor: 'pointer' }}
+            clearStorage(USER_LOGIN);
+            window.location.reload(); //f5 reload lại 
+          }}>Logout <i className="fa-solid fa-right-from-bracket"></i></NavLink>
+        </div>
+      </>
+    }
+    return <div className='login-in'>
+      <NavLink to="/login">Login</NavLink>
+    </div>
 
+  }
+
+  return (
     <div className="header">
 
       <div className="header-top">
@@ -12,18 +35,19 @@ export default function Header() {
             <img src='../../src/assets/img/logo_cybersoft.png' alt="logo" />
           </NavLink>
           <div className="select-list d-flex justify-content-around">
-            <div className='search'>
+            <div className='header-search'>
               <NavLink to='/search' ><i className="fa-solid fa-magnifying-glass"></i>
-              Search
+                Search
               </NavLink>
             </div>
             <div className="shop-carts">
               <NavLink to='/carts' ><i className="fa-solid fa-cart-shopping" />(0)</NavLink>
             </div>
-            <div className="login">
-              <NavLink to="/login">Login</NavLink>
-            </div>
-            <div className="register">
+
+            {renderLoginLink()}
+            {/* <NavLink to="/login">Login</NavLink> */}
+
+            <div className="header-register">
               <NavLink to="/register">Register</NavLink>
             </div>
           </div>

@@ -18,23 +18,25 @@ export default function Login() {
     onSubmit: (values) => {
       const action = loginActionApi(values);
       dispatch(action);
+      console.log('values', values)
 
     }
   })
   return (
-    <form >
+    <form onSubmit={frmLogin.handleSubmit} >
 
       <h2>Login</h2> <hr />
-      <div className='content-login' onSubmit={frmLogin.handleSubmit}>
+      <div className='content-login' >
         <div className="form-group">
           <p>Email</p>
-          <input className='form-control' name="email" type="email" placeholder='email' onInput={frmLogin.handleChange} onBlur={frmLogin.handleBlur}/>
+
+          <input className='form-control enter-text-1' name="email" type="email" placeholder='email' onInput={frmLogin.handleChange} onBlur={frmLogin.handleBlur} />
           {frmLogin.errors.email && <p className='p-err alert alert-danger'>{frmLogin.errors.email}</p>}
         </div>
 
         <div className="form-group">
           <p>Password</p>
-          <input className='form-control' name='password' type="password" placeholder='password'  onInput={frmLogin.handleChange} onBlur={frmLogin.handleBlur}/>
+          <input className='form-control enter-text-1' name='password' type="password" placeholder='password' onInput={frmLogin.handleChange} onBlur={frmLogin.handleBlur} />
           {frmLogin.errors.password && <p className='p-err alert alert-danger'>{frmLogin.errors.password}</p>}
           <i className="fa-solid fa-eye"></i>
         </div>
