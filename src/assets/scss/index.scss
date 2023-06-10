@@ -8,19 +8,23 @@
 @import '../scss/layouts/login';
 @import '../scss/layouts/profile';
 @import '../scss/base/footer';
+@import '../scss/layouts/search';
+
 //những phần này em để tạm ở đây
 h2 {
     font-weight: $fw-normal;
     font-size: $fs-4xl ;
     line-height: $lh-c4;
 }
+
 .btn-main {
     width: 121px;
-height: 48px;
+    height: 48px;
     background-color: #6200EE;
     color: #fff;
     border-radius: 50px;
 }
+
 .fa-eye {
     color: $text-c1-dark;
     width: 22px;
@@ -38,6 +42,7 @@ height: 48px;
     @media screen and (max-width: 767.98px) {
         right: -87.83%;
     }
+
     @media screen and (max-width: 767.98px) {
         right: -94.83%
     }
@@ -48,4 +53,9 @@ height: 48px;
     height: 54px;
     background: rgba(33, 33, 33, 0.08);
     border-radius: 4px 4px 0px 0px;
+}
+.p-main {
+    @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
+    margin-left: 6.67px;
+    margin-bottom: 10px;
 }
