@@ -19,7 +19,7 @@
 
                     .select-list {
 
-                        .search,
+                        .header-search,
                         .shop-carts {
 
                             // font-size: $fz;
@@ -65,8 +65,8 @@
 
                         }
 
-                        .login,
-                        .register {
+                        .login-in,
+                        .header-register,.logout {
                             a {
 
                                 @include text($fs-base, $fw-light, $text-c0-white, $lh-c1);
@@ -74,6 +74,7 @@
 
                             margin-right: 20px;
                         }
+                       
                     }
                 }
             }

@@ -23,7 +23,16 @@ h2 {
     background-color: #6200EE;
     color: #fff;
     border-radius: 50px;
+
+    &:hover {
+        background-color: #6200EE;
+
+        color: $text-c0-white;
+        transition: .5s;
+        animation: upDownBtn 1s linear 0s infinite;
+    }
 }
+
 
 .fa-eye {
     color: $text-c1-dark;
@@ -58,4 +67,19 @@ h2 {
     @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
     margin-left: 6.67px;
     margin-bottom: 10px;
+}
+
+@keyframes upDownBtn {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+   
 }

@@ -38,6 +38,7 @@ http.interceptors.request.use((config) => {
 }, (err) => {
     return Promise.reject(err);
 })
+
 //Cấu hình cho response (Kết quả trả về từ api)
 http.interceptors.response.use((res) => {
     return res;
@@ -49,5 +50,5 @@ http.interceptors.response.use((res) => {
         alert('Đăng nhập để vào trang này !');
         history.push('/login');
     }
-    return Promise.reject(err)
+   
 });

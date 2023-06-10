@@ -1,7 +1,25 @@
 //rafce
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProfileActionApi } from '../redux/reducer/userReducer';
 
 const Profile = (props) => {
+  // const { userProfile } = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
+
+  const getProfileApi = () => {
+    const action = getProfileActionApi();
+    dispatch(action);
+  }
+
+  useEffect(()=>{
+   getProfileApi() ;
+    
+  },[])
+
+const postUpdate = ()=>{
+//dựa theo token
+}
   return (
     <div className='profile'>
       <h2 className=''>Profile</h2>
@@ -46,7 +64,7 @@ const Profile = (props) => {
                     <input className="form-check-input" id="gender2" name="gender" type="radio" defaultValue={false} />
                     <label htmlFor="gender2">Female</label>
                   </div>
-                  <button className=' btn btn-main'>Update</button>
+                  <button className=' btn btn-main' onClick={postUpdate()}>Update</button>
                 </div>
 
               </div>
