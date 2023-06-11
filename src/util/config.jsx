@@ -3,11 +3,16 @@ import {history} from '../index';
 export const DOMAIN = 'https://shop.cyberlearn.vn';
 export const USER_LOGIN = 'userLogin';
 export const http = axios.create({
-    baseURL: DOMAIN, //domain của tất cả request
-    timeout: 30000 //thời gian request tồn tại // đây là trong vòng 30000 = 5 phút ; hết thời gian thì sẽ out
+    baseURL: DOMAIN,
+    timeout: 30000 
 });
 
 export const TOKEN = 'accessToken';
+
+export const httpSearch = axios.create({
+ baseURL:DOMAIN,
+ timeout:30000   
+})
 
 export const { saveStorageJSON, getStorageJSON, clearStorage } = {
     saveStorageJSON: (name, data) => {//lưu dữ liệu vào local
@@ -26,19 +31,16 @@ export const { saveStorageJSON, getStorageJSON, clearStorage } = {
     }
 }
 
-
 http.interceptors.request.use((config) => {
     //data (body): (lấy từ các input hoặc tham số từ phía client)
     config.headers = { ...config.headers }
     let token = getStorageJSON(USER_LOGIN)?.accessToken;// ? nếu không có thì trả null thì là chưa đăng nhập
     config.headers.Authorization = `Bearer ${token}`
-    config.headers.tokenCybersoft = `CybersoftDemo`;
     return config;
 
 }, (err) => {
     return Promise.reject(err);
 })
-
 //Cấu hình cho response (Kết quả trả về từ api)
 http.interceptors.response.use((res) => {
     return res;
@@ -50,5 +52,5 @@ http.interceptors.response.use((res) => {
         alert('Đăng nhập để vào trang này !');
         history.push('/login');
     }
-   
+ 
 });

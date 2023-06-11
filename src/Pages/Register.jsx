@@ -16,7 +16,7 @@ const Register = () => {
       phone: ''
     },
     validationSchema: yup.object().shape({
-      email: yup.string().required('email cannot be blank!').email('Email is invalid !'),//required là check bỏ trống 
+      email: yup.string().required('email cannot be blank!').email('Email is invalid !'),
       password: yup.string().required('password cannot be blank!').min(5, '5 - 32 characters').max(32, '5 - 32 character'),
       name: yup.string().required('name cannot be blank'),
       phone: yup.string().required('phone cannot be blank and just use numbers').matches(/^\d+$/, 'phone is numbers').min(9,'9 number').max(10,'10 number'),
