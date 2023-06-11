@@ -37,7 +37,7 @@
         .profile-form {
             margin-top: 31px;
 
-            form {
+            div {
                 .row {
                     div {
 
@@ -48,7 +48,12 @@
                             @media screen and (max-width:991.98px) {
                                 margin-left: 10vw;
                             }
-
+                            .p-err {
+                                margin-left: 0px;
+                                width: 443px;
+                                height: 54px;
+            margin-top: 5px;
+                            }
                             p {
                                 @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
                                 margin-left: 6.67px;

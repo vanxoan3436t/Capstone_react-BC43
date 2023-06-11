@@ -16,25 +16,144 @@
     }
 
     .form-group {
+        position: relative;
+
         input {
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+        }
+
+        label {
+            cursor: pointer;
+            position: absolute;
+            top: 28%;
+            left: 31%;
+
+            &::before {
+                display: inline-block;
+                width: 45px;
+                height: 45px;
+                font-size: $fs-4xl;
+                color: $text-c0-primary;
+            }
         }
     }
 
     .row {
         margin: 44px 0px 194px 0px;
 
-        div {
+        .item-search {
+            margin-bottom: 70px;
+
             @media screen and (max-width:767.98px) {
-              margin-bottom: 30px;
+                margin-bottom: 30px;
             }
+
             .card {
+                background: rgba(248, 248, 248, 1);
+                border: none;
+                margin-bottom: 47px;
+                height: 369px;
+                width: 334px;
+
                 img {
-                    width: 100%;
+                    width: 210px;
+                    height: 168px;
+                    margin-top: 45px;
+                    margin-left: 57px;
 
                     @media screen and (max-width:767.98px) {
-                        width: 50%;
+                        margin-left: 26vw;
                     }
+
+                    @media screen and (max-width:575.98px) {
+                        margin-left: 22vw;
+                    }
+                }
+
+                @media screen and (max-width:991.98px) {
+                    width: 400px;
+                    margin: 0 0 9vw 3vw;
+                }
+
+                @media screen and (max-width:767.98px) {
+                    width: 632px;
+                    margin: 0 0 11vw 6vw;
+                }
+
+                @media screen and (max-width:575.98px) {
+                    width: 470px;
+                    margin: 0 0 11vw 5.5vw;
+                }
+
+                .card-body {
+                    padding: 0;
+
+                    .name {
+
+                        @include text($fs-24, $fw-light, $text-c0-dark, $lh-c5);
+                        height: 29px;
+                        padding-left: 23px;
+
+                    }
+
+                    .desctips {
+                        @include text($fs-2xl, $fw-light, $text-c2-dark, $lh-c2);
+                        height: 84px;
+                        padding-left: 23px;
+
+                    }
+                }
+
+                .card-footer {
+                    border: none;
+                    padding: 0;
+                    background-color: $bg-c1-dark;
+
+                    .buy-now {
+                        // @include elementDiv(inline-block, 175px, 64px);
+                        display: inline-block;
+                        width: 174px;
+                        height: 64px;
+                        background: $bg-c0-green;
+                        padding: 22px 27px 18px 39px;
+
+                        @media screen and (max-width:991.98px) {
+                            width: 230px;
+                            padding-left: 70px;
+                        }
+
+                        @media screen and (max-width:767.98px) {
+                            width: 360px;
+                            padding-left: 136px;
+                        }
+
+                        @media screen and (max-width:575.98px) {
+                            width: 270px;
+                            padding-left: 92px;
+                        }
+
+                        a {
+                            @include text($fs-24, $fw-lighter, $text-c0-dark, $lh-c5);
+
+                            &:hover {
+                                font-weight: 700;
+                                transition: .5s;
+                            }
+                        }
+
+                    }
+
+                    .price {
+                        // @include elementDiv(inline-block, 160px, 64px, $bg-c1-dark);
+                        display: inline-block;
+                        width: 160px;
+                        height: 64px;
+                        background: $bg-c1-dark;
+                        @include text($fs-24, $fw-bolder, $text-c0-dark, $lh-c5);
+                        padding: 17px 8px 18px 66px;
+                        text-align: left;
+                    }
+
                 }
             }
         }
