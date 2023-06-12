@@ -1,14 +1,3 @@
-//rafce
-// import React from 'react'
-
-// const Home = () => {
-// 	return (
-// 		<div className='container'>
-
-// 		</div>
-// 	)
-// }
-
 // export default Home
 
 import React, { Component } from 'react'
@@ -27,7 +16,7 @@ export class Home extends Component {
 					<div>
 						<h3>Product name</h3>
 						<p>Product description</p>
-						<button className='btn btn-warning mx-2 text-white' style={{textDecoration: 'none'}}>
+						<button className='btn btn-warning mx-2 text-white' style={{ textDecoration: 'none' }}>
 							<NavLink to='/details'>Buy now</NavLink>
 						</button>
 					</div>
@@ -42,7 +31,9 @@ export class Home extends Component {
 						<h4>Adidas Prophere</h4>
 						<p>short descript...</p>
 						<div className='d-flex'>
-							<button className='btn btn-success'>Buy now</button>
+							<button className='btn btn-success'>
+								<NavLink to='/details'>Buy now</NavLink>
+							</button>
 							<p> 85 $</p>
 						</div>
 					</div>
@@ -52,7 +43,9 @@ export class Home extends Component {
 						<h4>Adidas Prophere</h4>
 						<p>short descript...</p>
 						<div className='d-flex'>
-							<button className='btn btn-success'>Buy now</button>
+							<button className='btn btn-success'>
+								<NavLink to='/details'>Buy now</NavLink>
+							</button>
 							<p> 85 $</p>
 						</div>
 					</div>
@@ -62,7 +55,9 @@ export class Home extends Component {
 						<h4>Adidas Prophere</h4>
 						<p>short descript...</p>
 						<div className='d-flex'>
-							<button className='btn btn-success'>Buy now</button>
+							<button className='btn btn-success'>
+								<NavLink to='/details'>Buy now</NavLink>
+							</button>
 							<p> 85 $</p>
 						</div>
 					</div>
@@ -72,7 +67,9 @@ export class Home extends Component {
 						<h4>Adidas Prophere</h4>
 						<p>short descript...</p>
 						<div className='d-flex'>
-							<button className='btn btn-success'>Buy now</button>
+							<button className='btn btn-success'>
+								<NavLink to='/details'>Buy now</NavLink>
+							</button>
 							<p> 85 $</p>
 						</div>
 					</div>
@@ -82,7 +79,9 @@ export class Home extends Component {
 						<h4>Adidas Prophere</h4>
 						<p>short descript...</p>
 						<div className='d-flex'>
-							<button className='btn btn-success'>Buy now</button>
+							<button className='btn btn-success'>
+								<NavLink to='/details'>Buy now</NavLink>
+							</button>
 							<p> 85 $</p>
 						</div>
 					</div>
@@ -92,10 +91,13 @@ export class Home extends Component {
 						<h4>Adidas Prophere</h4>
 						<p>short descript...</p>
 						<div className='d-flex'>
-							<button className='btn btn-success'>Buy now</button>
+							<button className='btn btn-success'>
+								<NavLink to='/details'>Buy now</NavLink>
+							</button>
 							<p> 85 $</p>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		)

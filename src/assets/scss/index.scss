@@ -28,11 +28,11 @@ h2 {
 }
 
 .btn-main {
-    width: 121px;
-    height: 48px;
+    width: 100px;
+    height: 40px;
     background-color: #6200EE;
     color: #fff;
-    border-radius: 50px;
+    border-radius: 50px ;
 
     &:hover {
         background-color: #6200EE;
@@ -43,6 +43,13 @@ h2 {
     }
 }
 
+.btn-main-2 {
+    width: 100px;
+    height: 40px;
+    background-color: #0018ee;
+    color: #fff;
+    border-radius: 10px ;
+}
 
 .fa-eye {
     color: $text-c1-dark;

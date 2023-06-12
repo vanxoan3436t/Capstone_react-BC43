@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../detail_folder/scss/index_detail.scss'
+import { NavLink } from 'react-router-dom'
 
 export class Detail extends Component {
     render() {
@@ -10,7 +11,7 @@ export class Detail extends Component {
                     <div class="container">
                         <div class="d-flex">
                             <div class="pics" id="image00">
-                                <img src="/detail_folder/pictures/shoes_01.jpg" alt="..." />
+                                <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..."/>
 
                             </div>
 
@@ -57,9 +58,31 @@ export class Detail extends Component {
                     <div class="container">
                         <h3 class="title">-Related Products-</h3>
                         <div class="list-item" id="extra-relatedSP">
-                            <div class="col">
+                            <div class="col col-2">
                                 <div class="card item-1" id="related-item-1">
-                                    <img src="/detail_folder/pictures/shoes_01.jpg" alt="..." />
+                                    <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
+
+                                    <div class="card-body">
+                                        <div class="name-price">
+                                            <h1 class="name">
+                                                Adidas Prophere
+                                                <br />
+                                                <i>Short descript</i>
+                                            </h1>
+                                        </div>
+                                        <div class="rating-button">
+                                            <button class="btn-buy">
+                                                <NavLink to='/'>Buy now</NavLink>
+                                            </button>
+                                            <p class="price">85$</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-2">
+                                <div class="card item-1" id="related-item-1">
+                                    <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
 
                                     <div class="card-body">
                                         <div class="name-price">
@@ -72,7 +95,7 @@ export class Detail extends Component {
 
                                         <div class="rating-button">
                                             <button class="btn-buy">
-                                                <a href="/detail_folder/detail.html">Buy now</a>
+                                                <NavLink to='/'>Buy now</NavLink>
 
                                             </button>
                                             <p class="price">85$</p>
@@ -81,9 +104,9 @@ export class Detail extends Component {
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div class="card item-2" id="related-item-2">
-                                    <img src="/detail_folder/pictures/shoes_01.jpg" alt="..." />
+                            <div class="col col-2">
+                                <div class="card item-1" id="related-item-1">
+                                    <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
 
                                     <div class="card-body">
                                         <div class="name-price">
@@ -96,13 +119,88 @@ export class Detail extends Component {
 
                                         <div class="rating-button">
                                             <button class="btn-buy">
-                                                <a href="/detail_folder/detail.html">Buy now</a>
+                                                <NavLink to='/'>Buy now</NavLink>
+
                                             </button>
                                             <p class="price">85$</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col col-2">
+                                <div class="card item-1" id="related-item-1">
+                                    <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
+
+                                    <div class="card-body">
+                                        <div class="name-price">
+                                            <h1 class="name">
+                                                Adidas Prophere
+                                                <br />
+                                                <i>Short descript</i>
+                                            </h1>
+                                        </div>
+
+                                        <div class="rating-button">
+                                            <button class="btn-buy">
+                                                <NavLink to='/'>Buy now</NavLink>
+
+                                            </button>
+                                            <p class="price">85$</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-2">
+                                <div class="card item-1" id="related-item-1">
+                                    <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
+
+                                    <div class="card-body">
+                                        <div class="name-price">
+                                            <h1 class="name">
+                                                Adidas Prophere
+                                                <br />
+                                                <i>Short descript</i>
+                                            </h1>
+                                        </div>
+
+                                        <div class="rating-button">
+                                            <button class="btn-buy">
+                                                <NavLink to='/'>Buy now</NavLink>
+
+                                            </button>
+                                            <p class="price">85$</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-2">
+                                <div class="card item-1" id="related-item-1">
+                                    <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
+
+                                    <div class="card-body">
+                                        <div class="name-price">
+                                            <h1 class="name">
+                                                Adidas Prophere
+                                                <br />
+                                                <i>Short descript</i>
+                                            </h1>
+                                        </div>
+
+                                        <div class="rating-button">
+                                            <button class="btn-buy">
+                                                <NavLink to='/'>Buy now</NavLink>
+
+                                            </button>
+                                            <p class="price">85$</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
 
 
                         </div>
