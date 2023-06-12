@@ -1,8 +1,9 @@
 //rafce
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react';
-import { useSearchParams } from 'react-router-dom'
+import {  useSearchParams } from 'react-router-dom'
 import { httpSearch } from '../util/config';
+import { history } from '../index';
 const Search = () => {
   const keyRef = useRef('');
   const [keyword, setKey] = useSearchParams();
@@ -30,6 +31,8 @@ const Search = () => {
       k: keyRef.current
     })
   }
+
+
   return (
     <div className='search'>
       <form onSubmit={handleSubmit}>
@@ -60,7 +63,10 @@ const Search = () => {
                 <p className='desctips'>{item.description.length > 50 ? item.description.substr(0, 50) + '...' : item.description}</p>
               </div>
               <div className="card-footer">
-                <span className='buy-now'>Buy now </span>
+                <span className='buy-now' onClick={() => {
+                  history.push(`/detail/${item.id}`)
+                }
+                }> Buy now</span>
                 <span className='price'>${item.price}</span>
               </div>
             </div>

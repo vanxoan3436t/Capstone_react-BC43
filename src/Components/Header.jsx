@@ -32,7 +32,7 @@ export default function Header() {
       <div className="header-top">
         <div className="container d-flex justify-content-between">
           <NavLink className='logo' to="/">
-            <img src='../../src/assets/img/logo_cybersoft.png' alt="logo" />
+            <img src='../assets/img/logocyber.png' alt="logo" />
           </NavLink>
           <div className="select-list d-flex justify-content-around">
             <div className='header-search'>
@@ -72,7 +72,7 @@ export default function Header() {
                 <NavLink to="/">Woman</NavLink>
               </li>
               <li>
-                <NavLink to="/profile">Kid</NavLink>
+                <NavLink to="/">Kid</NavLink>
               </li>
               <li>
                 <NavLink to="/">Sport</NavLink>
