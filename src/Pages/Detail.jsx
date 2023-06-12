@@ -47,7 +47,7 @@ export class Detail extends Component {
 
 
                                 <button class="btn-add-to-cart">
-                                    Add to cart
+                                    <NavLink to='/carts'>Add to cart</NavLink>
                                 </button>
                             </div>
                         </div>
