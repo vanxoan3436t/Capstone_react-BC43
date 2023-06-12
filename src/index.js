@@ -10,6 +10,7 @@ import Profile from './Pages/Profile';
 import Carts from './Pages/Carts';
 import Home from './Pages/Home';
 import './assets/scss/index.scss'
+
 //cấu hình redux
 import { Provider } from 'react-redux';
 import { store } from './redux/configStore';
@@ -32,6 +33,7 @@ root.render(
                 <Route path='register' element={<Register />}></Route>
                 <Route path='profile' element={<Profile />}></Route>
                 <Route path='carts' element={<Carts />}></Route>
+                <Route path='details' element={<Detail />}></Route>
             </Route>
         </Routes>
         </HistoryRouter>

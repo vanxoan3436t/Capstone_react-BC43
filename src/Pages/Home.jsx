@@ -13,6 +13,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 //Thêm thư viện local để test hiển thị.
 // import { arrProduct } from '../assets/data/data'
@@ -26,7 +27,9 @@ export class Home extends Component {
 					<div>
 						<h3>Product name</h3>
 						<p>Product description</p>
-						<button className='btn btn-warning mx-2'>Buy now</button>
+						<button className='btn btn-warning mx-2 text-white' style={{textDecoration: 'none'}}>
+							<NavLink to='/details'>Buy now</NavLink>
+						</button>
 					</div>
 				</div>
 
