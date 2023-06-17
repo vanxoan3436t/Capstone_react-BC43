@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { http } from '../../util/config';
 
+
+
+
+
 const initialState = {
     arrProduct: [],
 
@@ -25,11 +29,11 @@ const initialState = {
         price: '',
         feature: '',
         description: '',
-        size: '',
+        size: [],
         shortDescription: '',
         image: '',
         quantity: '',
-        relatedProducts: '',
+        relatedProducts: [],
     }
 
 
@@ -64,7 +68,7 @@ export const getAllProductActionApi = () => {
 export const getDetailActionApi = (id) => {
     return async (dispatch) => {
         const result = await http(`/api/Product/getbyid?id=${id}`);
-        const action = getDetailAction(result.data.content)
+        const action = getDetailAction(result.data.content)// id = ?
         dispatch(action)
     }
 }

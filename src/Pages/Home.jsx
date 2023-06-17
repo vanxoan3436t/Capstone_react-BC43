@@ -46,6 +46,7 @@ export default function Home() {
 								<div className=''>
 									<button className='btn btn-dark' onClick={() => {
 										history.push(`/detail/${item.id}`)
+									
 									}
 									}>
 

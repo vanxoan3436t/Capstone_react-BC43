@@ -11,6 +11,7 @@ export const TOKEN = 'accessToken';
 
 export const httpSearch = axios.create({
  baseURL:DOMAIN,
+
  timeout:30000   
 })
 

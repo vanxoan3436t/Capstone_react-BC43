@@ -6,50 +6,55 @@ import { history } from '../index';
 import { getAllProductActionApi, getDetailActionApi } from '../redux/reducer/productReducer';
 
 export default function Detail() {
-    const { proDetail } = useSelector(state => state.productReducer.proDetail);
+    const proDetail = useSelector(state => state.productReducer.proDetail);
+    const arrProduct = useSelector(state => state.productReducer.arrProduct);
     const dispatch = useDispatch();
     console.log(proDetail)
+    console.log(arrProduct)
 
 
 
-    const getDetail = () => {
-        const action = getDetailActionApi(1)
+    const getDetail = (id) => {
+        const action = getDetailActionApi(1)//getDetailActionApi(id) ?
         dispatch(action);
 
     }
 
     useEffect(() => {
 
-        getDetail()
+        getDetail();
     }, [])
 
     return (
         <div>
+
             <section className="carousel">
                 <div className="container">
                     <div className="d-flex">
                         <div className="pics" id="image00">
-                            <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
+                            <img src={proDetail.image} alt="..." />
                         </div>
                         <div className="title" id="title00">
-                            <h1>Product Name</h1>
+                            <h1>   {proDetail.name}</h1>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores pariatur sequi esse ducimus veritatis aspernatur totam inventore, tempore rem impedit illum qui a quae aperiam officiis, error repellat sunt nulla! ( Thuộc tính Description)
+                                {proDetail.description}
                             </p>
                             <h2>Available size</h2>
-                            <div className="shoes-size">
-                                <button className="size-38" id="size-numb-38" value={38}>38</button>
-                                <button className="size-39" id="size-numb-39" value={39}>39</button>
-                                <button className="size-40" id="size-numb-40" value={40}>40</button>
-                                <button className="size-41" id="size-numb-41" value={41}>41</button>
-                                <button className="size-42" id="size-numb-42" value={42}>42</button>
+                            <div className="shoes-size" >
+                                {proDetail.size.map((value, index) => {
+                                    return <button key={index}>{value}</button>
+                                })}
+
                             </div>
                             <div className="prices">
-                                <p id="get-price">85</p>
-                                <p>$</p>
+                                <p id="get-price">{proDetail.price} $</p>
+
                             </div>
                             <div className="shoes-quantity">
-                                <button className="btn-plus" id="btn-plus">
+                                <button className="btn-plus" id="btn-plus" onClick={()=>{
+
+
+                                }}>
                                     <i className="fa fa-plus" />
                                 </button>
                                 <p id="quantity">1</p>
@@ -69,8 +74,35 @@ export default function Detail() {
                 <div className="container">
                     <h3 className="title">-Related Products-</h3>
                     <div className="list-item" id="extra-relatedSP">
+                        {proDetail.relatedProducts.map((value) => {
+                            return <div className="col col-2 mb-5" key={value.id}>
+                                <div className="card item-1" id="related-item-1">
+                                    <img src={value.image} alt="..." />
+                                    <div className="card-body">
+                                        <div className="name-price">
+                                            <h1 className="name">
+                                                {value.name}
+                                                <br />
+                                                <i> {value.shortDescription}</i>
+                                            </h1>
+                                        </div>
+                                        <div className="rating-button">
+                                            <button className="btn-buy" onClick={() => {
+                                                history.push(`/detail/${value.id}`)
+                                                getDetail(value.id)
+                                            }}>
+                                                Buy now
+                                            </button>
+                                            <p className="price"> {value.price}$</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <div className="col col-2">
+
+                        })}
+
+                        {/* <div className="col col-2">
                             <div className="card item-1" id="related-item-1">
                                 <img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
                                 <div className="card-body">
@@ -189,44 +221,12 @@ export default function Detail() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
+                        </div> */}
 
                     </div>
-                    {/* <div className="row list-item" id="extra-relatedSP"> */}
-                    {/* {arrProduct.map((item) => {
-                            return <div className='col col-2 mb-5' key={item.id}>
-                                <div className="card">
-                                    <img src={item.image} alt="..." className='w-100' />
-                                    <div className="card-body">
-                                        <div className="name-price">
-                                            <h1 className="name">
-                                                {item.name}
-                                                <br />
-                                                <i>{item.description.length > 20 ? item.description.substr(0, 20) + '...' : item.description}</i>
-                                            </h1>
-                                           <h1 className='name'>{item.name}</h1>
-                                            <p>{item.description.length > 50 ? item.description.substr(0, 50) + '...' : item.description}</p> 
-                                        </div>
 
-                                        <div className='rating-button'>
-                                            <button className='btn btn-buy' onClick={() => {
-                                                getDetail(item.id);
-                                                history.push(`/detail/${item.id}`)
-
-                                            }}>
-
-                                                Buy now </button>
-                                            <span className='price'> {item.price}$</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        })} */}
                 </div>
-     
+
             </section >
         </div >
     )
