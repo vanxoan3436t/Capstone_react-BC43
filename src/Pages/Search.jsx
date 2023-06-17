@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react';
 import {  useSearchParams } from 'react-router-dom'
-import { httpSearch } from '../util/config';
+import { PRODUCT, httpSearch, saveStorageJSON } from '../util/config';
 import { history } from '../index';
 const Search = () => {
   const keyRef = useRef('');
@@ -65,6 +65,7 @@ const Search = () => {
               <div className="card-footer">
                 <span className='buy-now' onClick={() => {
                   history.push(`/detail/${item.id}`)
+                  saveStorageJSON(PRODUCT,item)
                 }
                 }> Buy now</span>
                 <span className='price'>${item.price}</span>

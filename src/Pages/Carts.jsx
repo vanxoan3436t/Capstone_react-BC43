@@ -1,10 +1,20 @@
 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
+import { getProfileActionApi } from '../redux/reducer/userReducer';
+import { useEffect } from 'react';
 
-class Carts extends Component {
+const Carts = (props) => {
+  const { userProfile } = useSelector(state => state.userReducer);
+  const dispatch = useDispatch();
+  const getProfileApi = () => {
+    const action = getProfileActionApi();
+    dispatch(action);
+  }
+  useEffect(() => {
+    getProfileApi();
 
-  render() {
+  }, [])
  
     return (
       <div className='carts'>
@@ -55,8 +65,6 @@ class Carts extends Component {
       </div>
     )
   }
-}
 
-const mapStateToProps = (state) => state
 
-export default connect(mapStateToProps)(Carts)
+  export default Carts

@@ -7,7 +7,6 @@ import { getAllProductActionApi, getDetailActionApi } from '../redux/reducer/pro
 import { PRODUCT, getStorageJSON, saveStorageJSON } from '../util/config';
 
 export default function Detail() {
-    // const arrProduct = useSelector(state => state.productReducer.arrProduct);
     const proDetail = useSelector(state => state.productReducer.proDetail);
     const dispatch = useDispatch();
      const detail = getStorageJSON(PRODUCT)
@@ -19,7 +18,6 @@ export default function Detail() {
         dispatch(action);
 
     }
-
     const getNewDetail = (id) => {
 
         const action = getDetailActionApi(id)
