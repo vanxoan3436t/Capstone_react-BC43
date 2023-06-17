@@ -1,21 +1,21 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 import { history } from '../index';
 import { getAllProductActionApi } from '../redux/reducer/productReducer';
+import { PRODUCT, saveStorageJSON } from '../util/config';
 
 export default function Home() {
 	const { arrProduct } = useSelector(state => state.productReducer);
 	const dispatch = useDispatch();
-	console.log(arrProduct)
+
 	const getProductApi = () => {
 		const action = getAllProductActionApi();
 		dispatch(action);
 	}
 
 	useEffect(() => {
-
 		getProductApi();
 	}, [])
 
@@ -46,9 +46,8 @@ export default function Home() {
 								<div className=''>
 									<button className='btn btn-dark' onClick={() => {
 										history.push(`/detail/${item.id}`)
-									
-									}
-									}>
+										saveStorageJSON(PRODUCT,item)
+									}}>
 
 										Buy now </button>
 									<span > {item.price}$</span>

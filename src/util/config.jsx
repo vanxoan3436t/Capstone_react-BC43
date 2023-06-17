@@ -2,6 +2,7 @@ import axios from 'axios';
 import {history} from '../index';
 export const DOMAIN = 'https://shop.cyberlearn.vn';
 export const USER_LOGIN = 'userLogin';
+export const PRODUCT = 'product'
 export const http = axios.create({
     baseURL: DOMAIN,
     timeout: 30000 
