@@ -91,6 +91,7 @@
                     }
 
                     .nav-list {
+                       
                         .menu-list {
                             padding-left: 0;
                             padding-top: 16px;
@@ -98,7 +99,7 @@
 
                             @media screen and (max-width:576px) {
                                 transform: translate(2%, 26%);
-                                flex-direction: column;
+                                flex-direction: row;
                                 padding-top: 0;
                             }
 
