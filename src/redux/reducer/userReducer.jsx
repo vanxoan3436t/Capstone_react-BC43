@@ -27,7 +27,6 @@ const initStateUserLogin = () => {
 //   infoUser = getStorageJSON(USER_LOGIN);
 // }
 // return infoUser;
-
 // }
 const initialState = {
   userLogin: initStateUserLogin(),
@@ -60,7 +59,7 @@ const userReducer = createSlice({
   }
 });
 
-export const { loginAction, getProfileAction, postUpdate } = userReducer.actions
+export const { loginAction, getProfileAction, postUpdate} = userReducer.actions
 
 export default userReducer.reducer
 
@@ -85,7 +84,7 @@ export const loginActionApi = (userLogin) => {
   }
 }
 
-export const profileActionApi = (userUpdate) => { 
+export const profileActionApi = (userUpdate) => {
   return async (dispatch) => {
     try {
       const res = await http.post(`/api/Users/updateProfile`, userUpdate);

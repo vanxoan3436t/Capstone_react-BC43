@@ -2,8 +2,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class Carts extends Component {
+class Carts extends Component {
+
   render() {
+ 
     return (
       <div className='carts'>
         <h2>Carts</h2> <hr />
@@ -55,6 +57,6 @@ export class Carts extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => state
 
 export default connect(mapStateToProps)(Carts)
