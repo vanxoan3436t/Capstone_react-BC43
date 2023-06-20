@@ -3,28 +3,28 @@ import { useDispatch, useSelector } from 'react-redux'
 import '../detail_folder/scss/index_detail.scss'
 import { NavLink } from 'react-router-dom'
 import { history } from '../index';
-import { getAllProductActionApi, getDetailActionApi } from '../redux/reducer/productReducer';
-import { PRODUCT, getStorageJSON, saveStorageJSON } from '../util/config';
+import {  getDetailActionApi } from '../redux/reducer/productReducer';
+import { PRODUCT, getStorageJSON } from '../util/config';
 
+const detail = getStorageJSON(PRODUCT)
 export default function Detail() {
     const proDetail = useSelector(state => state.productReducer.proDetail);
     const dispatch = useDispatch();
-     const detail = getStorageJSON(PRODUCT)
     console.log('proDetail.id', proDetail.id)
-  
-    const getDetailApi = (id) => {
 
+    const getDetailApi = () => {
         const action = getDetailActionApi(detail.id)//getDetailActionApi(id) ?
         dispatch(action);
 
     }
     const getNewDetail = (id) => {
-
         const action = getDetailActionApi(id)
         dispatch(action);
 
     }
 
+    const [quantily, setQuantily] = useState(1)
+    
     useEffect(() => {
         getDetailApi()
     }, [])
@@ -56,16 +56,22 @@ export default function Detail() {
 
                             </div>
                             <div className="shoes-quantity">
+                                <button className="btn-plus fs-4" id="btn-plus" onClick={() => {
+                                    setQuantily(quantily + 1);
+                                    if (quantily === 10) {
+                                        alert('có tiền không mà mua nhiều thế')
+                                    }
+                                }}>+</button>
+                                <p id="quantity">{quantily}</p>
+                                <button className="btn-plus fs-4" id="btn-minus" onClick={() => {
 
-                                <button className="btn-plus" id="btn-plus" onClick={() => {
+                                    setQuantily(quantily - 1);
+                                    if (quantily < 1) {
+                                        alert('mua giúp shop 1 cái đi please!')
+                                        return setQuantily(1)
+                                    }
 
-                                }}>
-                                    <i className="fa fa-plus" />
-                                </button>
-                                <p id="quantity">1</p>
-                                <button className="btn-plus" id="btn-minus">
-                                    <i className="fa fa-minus" />
-                                </button>
+                                }}>-</button>
                             </div>
                             <button className="btn-add-to-cart" onClick={() => {
                                 history.push('/carts')
@@ -93,7 +99,7 @@ export default function Detail() {
                                         </h1>
                                     </div>
                                     <div className="rating-button">
-                                        <button className="btn-buy" onClick={() => {
+                                        <button className=" btn-buy" onClick={() => {
                                             history.push(`/detail/${proDetail.id}`)
                                             getNewDetail(proDetail.id)
                                         }}>
@@ -104,7 +110,7 @@ export default function Detail() {
                                 </div>
                             </div>
                         </div>
-                        {/* {proDetail.relatedProducts?.map((value) => {
+                        {/* {proDetail.relatedProducts.map((value) => {
                             return <div className="col col-2 mb-5" key={value.id}>
                                 <div className="card item-1" id="related-item-1">
                                     <img src={value.image} alt="..." />
@@ -117,7 +123,7 @@ export default function Detail() {
                                             </h1>
                                         </div>
                                         <div className="rating-button">
-                                            <button className="btn-buy" onClick={() => {
+                                            <button className=" btn-buy" onClick={() => {
                                                 history.push(`/detail/${value.id}`)
                                                 getNewDetail(value.id)
                                                 saveStorageJSON(PRODUCT,value)
@@ -142,4 +148,3 @@ export default function Detail() {
     )
 
 }
-

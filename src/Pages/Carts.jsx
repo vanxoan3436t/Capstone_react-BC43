@@ -1,6 +1,6 @@
 
-import React, { Component } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux'
+import React, {  } from 'react'
+import {  useDispatch, useSelector } from 'react-redux'
 import { getProfileActionApi } from '../redux/reducer/userReducer';
 import { useEffect } from 'react';
 

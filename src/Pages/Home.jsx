@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux'
+import React, {  useEffect } from 'react'
+import {  useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 import { history } from '../index';
@@ -20,10 +20,10 @@ console.log('arrProduct', arrProduct)
 	}, [])
 
 	return (
-		<div className='container'>
-			<div className='d-flex'>
+		<div className='container '>
+			<div className=' carousel-text'>
 				<img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="..." />
-				<div>
+				<div >
 					<h3>Product name</h3>
 					<p>Product description</p>
 					<button className='btn btn-warning mx-2 text-white' style={{ textDecoration: 'none' }}>
@@ -37,20 +37,20 @@ console.log('arrProduct', arrProduct)
 
 			<div className='row'>
 				{arrProduct.map((item) => {
-					return <div className='col-4  custom_shoes mb-5' key={item.id}>
+					return <div className='col-12 col-md-6 col-xl-4 custom_shoes mb-5' key={item.id}>
 						<div className="card">
 							<img src={item.image} alt="..." className='w-100' />
 							<div className="card-body">
 								<h4>{item.name}</h4>
 								<p>{item.description.length > 50 ? item.description.substr(0, 50) + '...' : item.description}</p>
-								<div className=''>
-									<button className='btn btn-dark' onClick={() => {
+								<div className='rating-button'>
+									<button className=' btn-buy' onClick={() => {
 										history.push(`/detail/${item.id}`)
 										saveStorageJSON(PRODUCT,item)
 									}}>
 
 										Buy now </button>
-									<span > {item.price}$</span>
+									<span className='price'> {item.price}$</span>
 								</div>
 							</div>
 						</div>

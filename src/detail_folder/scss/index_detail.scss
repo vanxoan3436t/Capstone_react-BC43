@@ -2,6 +2,40 @@
 @import './layout/components/components_detail.scss';
 @import './base/base_detail';
 
+.rating-button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f0f0f0;
+
+    .btn-buy {
+        border: none;
+        padding: 15px 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: black;
+        background-color: #d1a822;
+        cursor: pointer;
+        &:hover {
+            a {
+                color: #d1a822;
+            }
+            color: black;
+            background: white;
+            border: #d1a822 solid 2px;
+            padding: 13px 48px;
+
+        }
+    }
+    .price {
+        padding: 0px 60px;
+        font-size: 20px;
+        font-weight: 600;
+      
+    }
+    
+}       
+
 .menu-option {
     .d-flex {
         .menu {
@@ -212,40 +246,7 @@
                         }
                     }
 
-                    .rating-button {
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: center;
-                        background-color: #f0f0f0;
-
-                        .btn-buy {
-                            border: none;
-                            padding: 15px 10px;
-                            font-size: 18px;
-                            font-weight: 500;
-                            color: black;
-                            background-color: #d1a822;
-                            cursor: pointer;
-                            &:hover {
-                                a {
-                                    color: #d1a822;
-                                }
-                                background: white;
-                                border: #d1a822 solid 2px;
-                                padding: 13px 48px;
-
-                            }
-                            a {
-                                text-decoration: none;
-                                color: black;
-                            }
-                        }
-                        p {
-                            padding: 0px 60px;
-                            font-size: 20px;
-                            font-weight: 600;
-                        }
-                    }        
+                    
                 }
             }
         }

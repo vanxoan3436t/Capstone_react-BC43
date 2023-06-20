@@ -1,52 +1,171 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
-p{
+p {
   margin-bottom: 0px;
 }
 
 //<SidebarJS header>
-.closeBar,.openBar {
-    position: absolute;
-    top: 8%;
-    left: 5%;
-    transform: translateY(-50%);
+.closeBar,
+.openBar {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  transform: translateY(-50%);
   font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .none{
-      display: none;
-  }
-  
-  .btn_navbar {
-      position: relative;
-      z-index: 10;
-      width: 20%;
-      display: none;
-    }
-  
-    .changeBar {
-      transform: translate(2%,16%);
-      display: none;
-    }
-  //</SidebarJS header>
+  cursor: pointer;
+}
 
+.none {
+  display: none;
+}
+
+.btn_navbar {
+  position: relative;
+  z-index: 10;
+  width: 20%;
+  display: none;
+}
+
+.changeBar {
+  transform: translate(2%, 16%);
+  display: none;
+}
+
+//</SidebarJS header>
+
+//những phần này em để tạm ở đây
+h2 {
+  font-weight: $fw-normal;
+  font-size: $fs-4xl ;
+  line-height: $lh-c4;
+}
+
+.custom_feature h3 {
+
+  background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
+  padding: 10px 0px;
+}
+
+.btn-main {
+  width: 100px;
+  height: 40px;
+  background-color: #6200EE;
+  color: #fff;
+  border-radius: 50px;
+
+  &:hover {
+    background-color: #6200EE;
+
+    color: $text-c0-white;
+    transition: .5s;
+    animation: upDownBtn 1s linear 0s infinite;
+  }
+}
+
+.btn-main-2 {
+  width: 100px;
+  height: 40px;
+  background-color: #0018ee;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.btn-buy {
+  border: none;
+  padding: 15px 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+  background-color: #d1a822;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+    background: white;
+    border: #d1a822 solid 2px;
+    padding: 13px 48px;
+
+  }
+}
+
+.fa-eye {
+  color: $text-c1-dark;
+  width: 22px;
+  height: 15px;
+  position: absolute;
+
+  right: 31.17%;
+  top: 62.83%;
+  cursor: pointer;
+
+  @media screen and (max-width:1198.98px) {
+    right: 17.17%;
+  }
+
+  @media screen and (max-width: 767.98px) {
+    right: -87.83%;
+  }
+
+  @media screen and (max-width: 767.98px) {
+    right: -94.83%
+  }
+}
+
+.form-control {
+  width: 443px;
+  height: 54px;
+  background: rgba(33, 33, 33, 0.08);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.p-main {
+  @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
+  margin-left: 6.67px;
+  margin-bottom: 10px;
+}
+
+
+.carousel-text {
+  display: flex;
+
+  @media screen and (max-width:575.98px) {
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  div {
+    line-height: 35px;
+  }
+}
+
+@keyframes upDownBtn {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}

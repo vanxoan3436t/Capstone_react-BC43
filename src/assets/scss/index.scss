@@ -1,102 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700&family=Roboto:wght@400;500&display=swap');
-@import './base/customize';
 @import './helpers/mixin';
 @import './helpers/variables';
+@import './base/customize';
 @import '../scss/layouts/carts';
+@import '../scss/layouts/home';
 @import '../scss/base/header';
 @import '../scss/layouts/register';
 @import '../scss/layouts/login';
 @import '../scss/layouts/profile';
 @import '../scss/base/footer';
 @import '../scss/layouts/search';
-
-//những phần này em để tạm ở đây
-h2 {
-    font-weight: $fw-normal;
-    font-size: $fs-4xl ;
-    line-height: $lh-c4;
-}
-
-.custom_feature h3{
-
-    background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
-    padding: 10px 0px;
-}
-
-.custom_shoes {
-    // border: 1px solid gray;
-}
-
-.btn-main {
-    width: 100px;
-    height: 40px;
-    background-color: #6200EE;
-    color: #fff;
-    border-radius: 50px ;
-
-    &:hover {
-        background-color: #6200EE;
-
-        color: $text-c0-white;
-        transition: .5s;
-        animation: upDownBtn 1s linear 0s infinite;
-    }
-}
-
-.btn-main-2 {
-    width: 100px;
-    height: 40px;
-    background-color: #0018ee;
-    color: #fff;
-    border-radius: 10px ;
-}
-
-.fa-eye {
-    color: $text-c1-dark;
-    width: 22px;
-    height: 15px;
-    position: absolute;
-
-    right: 31.17%;
-    top: 62.83%;
-    cursor: pointer;
-
-    @media screen and (max-width:1198.98px) {
-        right: 17.17%;
-    }
-
-    @media screen and (max-width: 767.98px) {
-        right: -87.83%;
-    }
-
-    @media screen and (max-width: 767.98px) {
-        right: -94.83%
-    }
-}
-
-.form-control {
-    width: 443px;
-    height: 54px;
-    background: rgba(33, 33, 33, 0.08);
-    border-radius: 4px 4px 0px 0px;
-}
-.p-main {
-    @include text($fs-18, $fw-medium, $text-c3-dark, $lh-c2);
-    margin-left: 6.67px;
-    margin-bottom: 10px;
-}
-
-@keyframes upDownBtn {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-   
-}
