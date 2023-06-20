@@ -9,7 +9,7 @@ import { PRODUCT, saveStorageJSON } from '../util/config';
 export default function Home() {
 	const { arrProduct } = useSelector(state => state.productReducer);
 	const dispatch = useDispatch();
-
+console.log('arrProduct', arrProduct)
 	const getProductApi = () => {
 		const action = getAllProductActionApi();
 		dispatch(action);

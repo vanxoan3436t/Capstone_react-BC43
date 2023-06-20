@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import {  PRODUCT, getStorageJSON, http} from '../../util/config';
+import {  PRODUCT, getStorageJSON, http, httpNonAuth} from '../../util/config';
+import axios from 'axios';
 
 const initStateDetail = () => {
     let proDetailInit = {
@@ -52,10 +53,13 @@ export default productReducer.reducer
 
 export const getAllProductActionApi = () => {
     return async (dispatch) => {
-        const res = await http(`/api/Product`);
+        try {
+        const res = await httpNonAuth(`/api/Product`);
         const action = getAllProductAction(res.data.content)
         dispatch(action)
-
+        }catch (err) {
+            alert(err.response?.data);
+        }
     }
 }
 
@@ -64,10 +68,8 @@ export const getDetailActionApi = (id) => {
     return async (dispatch) => {
         // const productID = getStorageJSON(PRODUCT)
      
-        const result = await http(`/api/Product/getbyid?id=${id}`);
+        const result = await httpNonAuth(`/api/Product/getbyid?id=${id}`);
         const action = getDetailAction(result.data.content)// id = ?
-
         dispatch(action)
-
     }
 }

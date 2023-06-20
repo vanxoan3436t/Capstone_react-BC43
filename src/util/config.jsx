@@ -15,6 +15,10 @@ export const httpSearch = axios.create({
     timeout: 30000
 })
 
+export const httpNonAuth = axios.create({
+    baseURL: DOMAIN,
+    timeout: 30000
+})
 export const { saveStorageJSON, getStorageJSON, clearStorage } = {
     saveStorageJSON: (name, data) => {//lưu dữ liệu vào local
         const string = JSON.stringify(data);
@@ -42,6 +46,15 @@ http.interceptors.request.use((config) => {
 }, (err) => {
     return Promise.reject(err);
 })
+
+httpNonAuth.interceptors.request.use((config) => {
+    config.baseURL = DOMAIN;
+    config.headers = { ...config.headers }
+    config.headers.tokenCybersoft = `TOKEN_CYBERSOFT`;
+    return config
+}, err => {
+    return Promise.reject(err)
+});
 //Cấu hình cho response (Kết quả trả về từ api)
 http.interceptors.response.use((res) => {
     return res;
