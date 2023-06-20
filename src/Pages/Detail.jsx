@@ -6,13 +6,13 @@ import { history } from '../index';
 import {  getDetailActionApi } from '../redux/reducer/productReducer';
 import { PRODUCT, getStorageJSON } from '../util/config';
 
-const detail = getStorageJSON(PRODUCT)
+
 export default function Detail() {
     const proDetail = useSelector(state => state.productReducer.proDetail);
     const dispatch = useDispatch();
     console.log('proDetail.id', proDetail.id)
-
-    const getDetailApi = () => {
+    const detail = getStorageJSON(PRODUCT)
+    const getDetailApi = (id) => {
         const action = getDetailActionApi(detail.id)//getDetailActionApi(id) ?
         dispatch(action);
 
@@ -27,6 +27,7 @@ export default function Detail() {
     
     useEffect(() => {
         getDetailApi()
+
     }, [])
 
     return (
