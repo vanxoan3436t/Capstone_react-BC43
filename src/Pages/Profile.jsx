@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 const Profile = (props) => {
   const { userProfile } = useSelector(state => state.userReducer);
+const userValue = userProfile?.data?.content;
   const dispatch = useDispatch();
 
   const getProfileApi = () => {
@@ -57,13 +58,13 @@ const Profile = (props) => {
 
                 <div className="form-group">
                   <p >Email</p>
-                  <input className='form-control' type="email" placeholder='email' name='email' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
+                  <input className='form-control' value={userValue?.email} type="email" placeholder='email' name='email' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   {profileFrm.errors.email && <p className='p-err alert alert-danger'>{profileFrm.errors.email}</p>}
                 </div>
 
                 <div className="form-group">
                   <p >Phone</p>
-                  <input className='form-control' type="number" placeholder='phone' name='phone' onBlur={profileFrm.handleBlur} onInput={profileFrm.handleChange} />
+                  <input className='form-control' value={userValue?.phone} type="number" placeholder='phone' name='phone' onBlur={profileFrm.handleBlur} onInput={profileFrm.handleChange} />
                   {profileFrm.errors.phone && <p className='p-err alert alert-danger'>{profileFrm.errors.phone}</p>}
                 </div>
 
@@ -72,13 +73,13 @@ const Profile = (props) => {
 
                 <div className="form-group">
                   <p >Name</p>
-                  <input className='form-control' type="text" placeholder='name' name='name' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
+                  <input className='form-control' value={userValue?.name} type="text" placeholder='name' name='name' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   {profileFrm.errors.name && <p className='p-err alert alert-danger'>{profileFrm.errors.name}</p>}
                 </div>
 
                 <div className="form-group">
                   <p >Password</p>
-                  <input className='form-control' type="password" placeholder='password' name='password' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
+                  <input className='form-control' value={userValue?.password} type="password" placeholder='password' name='password' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   {profileFrm.errors.password && <p className='p-err alert alert-danger'>{profileFrm.errors.password}</p>}
                 </div>
 
@@ -86,9 +87,9 @@ const Profile = (props) => {
                   <span >Gender</span>
 
                   <div className='d-flex justify-content-between'>
-                    <input className="form-check-input " id="gender1" name="gender" type="radio" defaultValue={true} onInput={profileFrm.handleChange} />
+                    <input className="form-check-input " value={userValue?.gender} id="gender1" name="gender" type="radio" defaultValue={true} onInput={profileFrm.handleChange} />
                     <label htmlFor="gender1">Male</label>
-                    <input className="form-check-input" id="gender2" name="gender" type="radio" defaultValue={false} onInput={profileFrm.handleChange} />
+                    <input className="form-check-input" value={userValue?.gender} id="gender2" name="gender" type="radio" defaultValue={false} onInput={profileFrm.handleChange} />
                     <label htmlFor="gender2">Female</label>
                   </div>
                   <button className=' btn btn-main' >Update</button>

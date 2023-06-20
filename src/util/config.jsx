@@ -1,19 +1,18 @@
 import axios from 'axios';
-import {history} from '../index';
+import { history } from '../index';
 export const DOMAIN = 'https://shop.cyberlearn.vn';
 export const USER_LOGIN = 'userLogin';
 export const PRODUCT = 'product'
 export const http = axios.create({
     baseURL: DOMAIN,
-    timeout: 30000 
+    timeout: 30000
 });
 
 export const TOKEN = 'accessToken';
 
 export const httpSearch = axios.create({
- baseURL:DOMAIN,
-
- timeout:30000   
+    baseURL: DOMAIN,
+    timeout: 30000
 })
 
 export const { saveStorageJSON, getStorageJSON, clearStorage } = {
@@ -46,7 +45,7 @@ http.interceptors.request.use((config) => {
 //Cấu hình cho response (Kết quả trả về từ api)
 http.interceptors.response.use((res) => {
     return res;
-  
+
 }, (err) => {
     console.log('err', err)
     //Xử lý lỗi cho api
@@ -54,5 +53,5 @@ http.interceptors.response.use((res) => {
         alert('Đăng nhập để vào trang này !');
         history.push('/login');
     }
- 
+
 });

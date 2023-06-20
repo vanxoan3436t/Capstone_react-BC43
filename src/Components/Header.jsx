@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { USER_LOGIN, clearStorage } from '../util/config';
-
+import { history } from '../index';
 export default function Header() {
   const { userLogin } = useSelector(state => state.userReducer);
   const renderLoginLink = () => {
@@ -41,7 +41,7 @@ export default function Header() {
               </NavLink>
             </div>
             <div className="shop-carts">
-              <NavLink to='/carts' ><i className="fa-solid fa-cart-shopping" />(0)</NavLink>
+              <NavLink to='/carts'   ><i className="fa-solid fa-cart-shopping" />(0)</NavLink>
             </div>
 
             {renderLoginLink()}
