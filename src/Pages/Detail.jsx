@@ -5,11 +5,9 @@ import { history } from '../index';
 import {  getDetailActionApi } from '../redux/reducer/productReducer';
 import { PRODUCT, getStorageJSON } from '../util/config';
 
-
 export default function Detail() {
     const proDetail = useSelector(state => state.productReducer.proDetail);
     const dispatch = useDispatch();
-    console.log('proDetail.id', proDetail.id)
     const detail = getStorageJSON(PRODUCT)
     const getDetailApi = (id) => {
         const action = getDetailActionApi(detail.id)//getDetailActionApi(id) ?
@@ -19,7 +17,6 @@ export default function Detail() {
     const getNewDetail = (id) => {
         const action = getDetailActionApi(id)
         dispatch(action);
-
     }
 
     const [quantily, setQuantily] = useState(1)
@@ -31,7 +28,6 @@ export default function Detail() {
 
     return (
         <div>
-
             <section className="carousel">
                 <div className="container">
                     <div className="d-flex">

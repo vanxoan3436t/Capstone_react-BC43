@@ -23,6 +23,15 @@ const theme = extendTheme({
         }
       }
     },
+    MuiContainer : {
+      styleOverrides:{
+        root: {
+          '&.MuiContainer-root' : {
+            maxWidth : '1280px'
+          }
+        }
+      }
+    }
   }
 })
 

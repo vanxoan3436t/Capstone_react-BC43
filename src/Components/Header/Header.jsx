@@ -83,10 +83,12 @@ export default function Header() {
               transition: 'all .5s'
             },
           }}>
-            <Avatar alt="Remy Sharp" src="https://gaixinhbikini.com/wp-content/uploads/2022/09/gai-dep-china.jpg" />
+            <Avatar  onClick={() => {
+             
+              history.push('/profile')
+              }} alt="Remy Sharp" src="https://gaixinhbikini.com/wp-content/uploads/2022/09/gai-dep-china.jpg" />
             <LogoutIcon 
             onClick={() => {
-
               clearStorage(USER_LOGIN);
               window.location.reload();
               history.push('/')
@@ -179,7 +181,9 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar  className='header' position="static" 
+     
+      >
         <Container sx={{
           '&.MuiContainer-root': { maxWidth: '1280px', p: 0 }
 
@@ -188,10 +192,12 @@ export default function Header() {
             <Button variant='h1' sx={{
               fontSize: '22px',
               borderRadius: '30%',
-              color: (theme) => theme.palette.primary.main,
+              // color: (theme) => theme.palette.mode === 'dark' ? ,
+              color: '#1976d2',
               textTransform: 'unset',
-              bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'white'),
-              '&:hover': { bgcolor: (theme) => theme.palette.mode === 'light' ? 'white' : 'rgba(255, 255, 255, 0.2)' }
+              bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'white' : 'white'),
+              // bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'white'),
+              '&:hover': { bgcolor: (theme) => theme.palette.mode === 'light' ? 'white' : 'white' }
             }}
               startIcon={<AllInclusiveIcon />}
               onClick={() => { history.push('/') }}

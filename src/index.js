@@ -8,7 +8,6 @@ import Detail from './Pages/Detail';
 import Register from './Pages/Register';
 import Profile from './Pages/Profile';
 import Carts from './Pages/Carts';
-import Home from './Pages/Home';
 import './assets/scss/index.scss'
 
 //cấu hình redux
@@ -19,6 +18,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
 import theme from './theme';
 import { createBrowserHistory } from 'history';
+import Home from './Pages/Home/Home';
 export const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

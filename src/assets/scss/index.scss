@@ -10,3 +10,28 @@
 @import '../scss/layouts/profile';
 @import '../scss/base/footer';
 @import '../scss/layouts/search';
+@import '../scss/layouts/home';
+
+//theme light-dark
+[data-mui-color-scheme="dark"] {
+  .header{
+    background: linear-gradient(to top, #bdc3c7, #2c3e50)!important
+
+  }
+  .carousel-home {
+    background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
+    .carousel-item-right{
+      span{
+        background: linear-gradient(to left, #bdc3c7, #2c3e50)!important;        ;
+      }
+      button{
+        background: linear-gradient(to right, #355570, #283e51)!important;
+      }
+    }
+  }
+
+
+  .footer{
+    background: linear-gradient(to top, #bdc3c7, #2c3e50)!important
+  }
+}
