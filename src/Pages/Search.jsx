@@ -6,8 +6,9 @@ import { PRODUCT, httpSearch, saveStorageJSON } from '../util/config';
 import { history } from '../index';
 const Search = () => {
   const keyRef = useRef('');
-  const [keyword, setKey] = useSearchParams();
+   const [keyword, setKey] = useSearchParams();
   const [arrProd, setArrProd] = useState([]);
+  
   useEffect(() => {
     const kWord = keyword.get('k');
     if (kWord !== '') {

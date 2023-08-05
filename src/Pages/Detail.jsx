@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import '../detail_folder/scss/index_detail.scss'
 import { NavLink } from 'react-router-dom'
 import { history } from '../index';
 import {  getDetailActionApi } from '../redux/reducer/productReducer';
