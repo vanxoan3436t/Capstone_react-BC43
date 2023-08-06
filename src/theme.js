@@ -17,8 +17,7 @@ const theme = extendTheme({
       styleOverrides:{
         root:{
           '&.MuiButtonBase-root' : {
-            marginRight:'10px',
-
+            // marginRight:'10px',
           }
         }
       }
@@ -31,6 +30,9 @@ const theme = extendTheme({
           }
         }
       }
+    },
+    MuiInputBase :{
+      
     }
   }
 })

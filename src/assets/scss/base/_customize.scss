@@ -9,6 +9,11 @@
   margin: 0 auto;
 }
 
+body{
+position: static;
+padding-right: 0!important;
+overflow: unset!important;
+}
 a {
   text-decoration: none;
 }
@@ -20,7 +25,6 @@ li {
 p {
   margin-bottom: 0px;
 }
-
 //<SidebarJS header>
 .closeBar,
 .openBar {
@@ -49,8 +53,6 @@ p {
 }
 
 //</SidebarJS header>
-
-//những phần này em để tạm ở đây
 h2 {
   font-weight: $fw-normal;
   font-size: $fs-4xl ;
@@ -87,23 +89,6 @@ h2 {
   border-radius: 10px;
 }
 
-.btn-buy {
-  border: none;
-  padding: 15px 10px;
-  font-size: 18px;
-  font-weight: 500;
-  color: black;
-  background-color: #d1a822;
-  cursor: pointer;
-
-  &:hover {
-    color: black;
-    background: white;
-    border: #d1a822 solid 2px;
-    padding: 13px 48px;
-
-  }
-}
 
 .fa-eye {
   color: $text-c1-dark;

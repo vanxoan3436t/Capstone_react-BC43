@@ -43,6 +43,5 @@ root.render(
                 </Routes>
             </HistoryRouter>
         </CssVarsProvider>
-
     </Provider>
 );

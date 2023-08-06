@@ -14,7 +14,12 @@ import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
 
 function ModeSelect() {
   const { mode, setMode } = useColorScheme()
+  const handleValueResMode = () => {
+    if (mode) {
+      console.log('mode', mode)
 
+    }
+  }
   const handleChange = (event) => {
     const selectedMode = event.target.value
     setMode(selectedMode)
@@ -23,8 +28,8 @@ function ModeSelect() {
     <FormControl size="small" sx={{ minWidth: 120 }}>
       <InputLabel
         sx={{
-          color: 'white',
-          '&.Mui-focused ': { color: 'white' }
+          color: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' },
+          '&.Mui-focused ': { color: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' } }
         }}
         id="label-select-dark-light-mode">Mode</InputLabel>
       <Select
@@ -34,11 +39,11 @@ function ModeSelect() {
         label="Mode"
         onChange={handleChange}
         sx={{
-          color: 'white',
-          '.MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-          '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
-          '.MuiSvgIcon-root': { color: 'white' }
+          color: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' },
+          '.MuiOutlinedInput-notchedOutline': { borderColor: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' } },
+          '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' } },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' } },
+          '& .MuiSvgIcon-root': { color: (theme) => theme.palette.mode === 'dark' ? 'white' : { xs: 'black', sm: 'white' } }
         }}
       >
         <MenuItem value='light'>

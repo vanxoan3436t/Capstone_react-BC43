@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { USER_LOGIN, clearStorage } from '../../util/config';
 import { history } from '../../index';
@@ -26,6 +26,8 @@ import ModeSelect from '../ModeSelect/ModeSelect';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
+
+// START SEARCH
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -53,6 +55,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
+
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
@@ -64,9 +67,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-
+// END SEARCH
 export default function Header() {
-  //xử lí đăng nhập
+  // start Login
   const { userLogin } = useSelector(state => state.userReducer);
   const renderLoginLink = () => {
     if (userLogin.email !== '') {
@@ -74,7 +77,7 @@ export default function Header() {
         <Box sx={{
           flexGrow: 0, position: 'relative',
         }}>
-          <IconButton  sx={{
+          <IconButton sx={{
             p: 0,
 
             '&:hover .MuiSvgIcon-root': {
@@ -83,15 +86,15 @@ export default function Header() {
               transition: 'all .5s'
             },
           }}>
-            <Avatar  onClick={() => {
-             
+            <Avatar onClick={() => {
+
               history.push('/profile')
-              }} alt="Remy Sharp" src="https://gaixinhbikini.com/wp-content/uploads/2022/09/gai-dep-china.jpg" />
-            <LogoutIcon 
-            onClick={() => {
-              clearStorage(USER_LOGIN);
-              window.location.reload();
-              history.push('/')
+            }} alt="Remy Sharp" src="https://gaixinhbikini.com/wp-content/uploads/2022/09/gai-dep-china.jpg" />
+            <LogoutIcon
+              onClick={() => {
+                clearStorage(USER_LOGIN);
+                window.location.reload();
+                history.push('/')
               }}
               sx={{
                 position: { md: 'absolute', xs: 'unset' },
@@ -99,26 +102,40 @@ export default function Header() {
                 opacity: { md: 0, xs: 1 },
                 color: '#d32f2f',
                 transition: 'all .5s',
-                translate: {md : 'unset' , xs :'22px 0'}
+                translate: { md: 'unset', xs: '22px 0' }
               }} />
           </IconButton>
         </Box>
       </Box >
     }
 
-    return <Button sx={{
+    return <Button className='header-login' sx={{
       color: 'white',
       '&.MuiButtonBase-root': {
         marginRight: '0px',
-        bgcolor: '#2b8ac9',
         height: '40px'
       }
     }} onClick={() => {
-
       history.push('/login')
     }}>Đăng Nhập</Button>
   }
-  //
+  // end Login
+
+
+  // header fix
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.addEventListener('scroll', handleScroll);
+    }
+  }, [])
+  // end header fix
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
@@ -126,9 +143,6 @@ export default function Header() {
   }
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -163,7 +177,7 @@ export default function Header() {
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          aria-label="show 1 new notifications"
           color="inherit"
         >
           <Badge badgeContent={1} color="error">
@@ -172,23 +186,29 @@ export default function Header() {
         </IconButton>
         <p>card</p>
       </MenuItem>
+
+      <MenuItem sx={{ display: { xs: 'block', sm: 'none' } }}>
+        <ModeSelect />
+      </MenuItem>
+
       <MenuItem>
         {renderLoginLink()}
-        <p></p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar  className='header' position="static" 
-     
+      <AppBar position='static' className={`header sticky-on ${scrollPosition > 64 ? 'sticky' : ''}` }
+        sx={{
+          '&.MuiPaper-root': { boxShadow: 'none'}
+        }}
       >
         <Container sx={{
           '&.MuiContainer-root': { maxWidth: '1280px', p: 0 }
 
         }}>
-          <Toolbar>
+          <Toolbar >
             <Button variant='h1' sx={{
               fontSize: '22px',
               borderRadius: '30%',
@@ -196,52 +216,58 @@ export default function Header() {
               color: '#1976d2',
               textTransform: 'unset',
               bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'white' : 'white'),
-              // bgcolor: (theme) => (theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'white'),
               '&:hover': { bgcolor: (theme) => theme.palette.mode === 'light' ? 'white' : 'white' }
             }}
               startIcon={<AllInclusiveIcon />}
               onClick={() => { history.push('/') }}
             >Shoes</Button>
-            {/* Mobile */}
+            {/*Menu Mobile */}
             <Box>
               <Button
                 size="large"
                 edge="start"
                 aria-label="open drawer"
-                sx={{ color: 'white', mr: 2, display: { xs: 'block', md: 'none' } }}
-                id="basic-button-recent"
-                aria-controls={open ? 'basic-menu-recent' : undefined}
+                sx={{
+                  color: 'white', mr: 2, display: { xs: 'block', md: 'none' },
+                  '&.MuiButtonBase-root': {
+                    marginRight: '0px',
+                    minWidth: '50px',
+                  }
+                }}
+                id="basic-button-bar"
+                aria-controls={open ? 'basic-menu-bar' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+
               >
                 <MenuIcon />
               </Button>
               <Menu
-                id="basic-menu-recent"
+                id="basic-menu-bar"
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleMenuClose}
                 MenuListProps={{
-                  'aria-labelledby': 'basic-button-recent'
+                  'aria-labelledby': 'basic-button-bar'
                 }}
                 sx={{ display: { md: 'none' } }}
               >
                 <MenuItem ><HomeMenu /></MenuItem>
                 <MenuItem > <Men /></MenuItem>
-                <MenuItem >  <Woman /></MenuItem>
+                <MenuItem > <Woman /></MenuItem>
                 <MenuItem > <Kid /></MenuItem>
               </Menu>
             </Box>
 
-            {/* Tablet and > 900px */}
+            {/*Menu Tablet and > 900px */}
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <HomeMenu />
               <Men />
               <Woman />
               <Kid />
             </Box>
-            {/* Tablet 900px */}
+            {/* Menu Tablet 900px */}
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -253,16 +279,17 @@ export default function Header() {
             </Search>
             <Box sx={{ flexGrow: 1 }} />
             {/* dark light */}
-            <ModeSelect />
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <ModeSelect />
+            </Box>
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <IconButton
                 size="large"
                 aria-label="show 17 new notifications"
                 color="inherit"
-
                 sx={{
                   margin: '0 5px',
-                  padding: '0 12px'
+                  padding: '0 12px',
                 }}
               >
                 <Badge badgeContent={1} color="error">
@@ -279,6 +306,11 @@ export default function Header() {
                 aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
                 color="inherit"
+                sx={{
+                  '&.MuiButtonBase-root': {
+                    padding: 0,
+                  }
+                }}
               >
                 <MoreIcon />
               </IconButton>
@@ -288,7 +320,6 @@ export default function Header() {
 
       </AppBar>
       {renderMobileMenu}
-      {/* {renderMenu} */}
     </Box >
   )
 }

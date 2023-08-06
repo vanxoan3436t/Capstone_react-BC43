@@ -1,5 +1,15 @@
+/*-------- Backround ---------*/
+$bg-gradient-light-0:linear-gradient(to bottom, #005aa7, #fffde4)!important;
+$bg-gradient-light-1: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff)!important;
+$bg-gradient-light-2: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff)!important;
+$bg-gradient-light-3: linear-gradient(to left, #3196bb, #2980b9);
+$bg-gradient-light-4: linear-gradient(to left, #0575e6, #021b79);
 
-/*-------- Backroung ---------*/
+$bg-gradient-dark-0:linear-gradient(to top, #bdc3c7, #2c3e50)!important;
+$bg-gradient-dark-1: linear-gradient(to bottom, #bdc3c7, #2c3e50)!important;
+$bg-gradient-dark-2: linear-gradient(to left, #bdc3c7, #2c3e50) !important;
+$bg-gradient-dark-3:linear-gradient(to right, #355570, #283e51) !important;
+
 $bg-c0-white:#F5F5F5;
 
 $bg-c0-primary:#1976d2;
@@ -42,7 +52,7 @@ $fs-4xl: 40px;
 $fs-18:18px;
 $fs-24:24px;
 $fs-32:32px;
-//light-height khi xuất hiện giá trị mới ở các trang khác thì có thể thêm vào thay đổi (c)
+//light-height 
 $lh-c1:19.36px;
 $lh-c2:24.2px;
 $lh-c3:2px;
@@ -50,4 +60,3 @@ $lh-c4:48.41px;
 $lh-c5:29.05px;
 $lh-c6:36.31px;
 $lh-c7:38.73px;
-//width s

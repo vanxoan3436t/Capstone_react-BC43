@@ -1,6 +1,6 @@
 .carousel-home {
-  background: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff);
-
+  background: $bg-gradient-light-1;
+padding-top: 64px;
   .slick-slider {
 
     .slick-prev,
@@ -24,15 +24,11 @@
 
             @media screen and (max-width: 767.98px) {
               flex-direction: column;
-              // align-items: unset;
             }
 
             .carousel-item-left {
               img {
                 width: 100%;
-                // @media screen and (max-width: 767.98px){
-                //   width:70% ;
-                // }
               }
             }
 
@@ -57,11 +53,10 @@
               span {
                 display: inline-block;
                 color: $text-c0-white;
-
                 padding: 7px 15px;
                 margin-right: 20px;
                 border-radius: 8px;
-                background: linear-gradient(to left, #3196bb, #2980b9, );
+                background: $bg-gradient-light-3;
                 font-size: 1.2rem;
                 line-height: 1.8;
 
@@ -69,9 +64,7 @@
 
               button {
                 color: $text-c0-white;
-                background: $bg-c0-primary;
-                // 
-                background: linear-gradient(to left, #0575e6, #021b79);
+                background: $bg-gradient-light-4;
                 font-size: 1.5rem;
               }
             }
@@ -79,5 +72,73 @@
         }
       }
     }
+  }
+}
+
+.list-product {
+  background: $bg-gradient-light-2;
+
+  h1 {
+    font-size: 3rem;
+    color: $text-c0-white ;
+
+  }
+
+  .card-item {
+    .card {
+
+      .card-body {
+        @media screen and (max-width:767.98px) {
+          transform: translateY(-10vw);
+        }
+
+        h5 {
+          @media screen and (max-width:767.98px) {
+            font-size: 2.2rem;
+          }
+          @media screen and (max-width:575.98px) {
+            font-size: 1.2rem;
+          }
+        }
+
+        .rating-button {
+          margin-top: 10px;
+
+          button {
+            background: $bg-gradient-light-4;
+            color: $text-c0-white;
+
+          }
+
+          span {
+            display: inline-block;
+            color: $text-c0-white;
+            padding: 7px 15px;
+            margin-left: 20px;
+            border-radius: 8px;
+            background: linear-gradient(to left, #3196bb, #2980b9, );
+            font-size: 0.9rem;
+          }
+
+          @media screen and (max-width:767.98px) {
+            margin-top: 18px;
+            display: flex;
+
+            button {
+              font-size: 1.3rem;
+            }
+
+            span {
+              padding: 9px 15px;
+              font-size: 1.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .card {
+    background: $bg-gradient-light-0;
   }
 }

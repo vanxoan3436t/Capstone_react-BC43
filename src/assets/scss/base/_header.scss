@@ -1,3 +1,27 @@
 .header{
-    background: linear-gradient(to bottom, #005aa7, #fffde4)!important
+
+    background: $bg-gradient-light-0;
+    position: absolute!important;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    transition: all .5s ease;
+    
+    .header-menu{
+        @media screen and (max-width:991.98px){
+            margin-right: 0!important;
+        }
+    }
+   
+}
+.header-login{
+    background:$bg-gradient-light-4;
+}
+.header.sticky-on.sticky{
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: all .5s ease;
 }

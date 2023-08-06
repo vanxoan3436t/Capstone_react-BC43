@@ -21,6 +21,7 @@ function HomeMenu() {
   return (
     <Box>
       <Button
+      className='header-menu'
         sx={{
           color: (theme) => (theme.palette.mode === 'dark' ? 'white' : { xs: '#1976d2', md: 'white' })
         }
@@ -32,32 +33,11 @@ function HomeMenu() {
         onClick={() => {
           history.push('/')
         }}
-        // endIcon={<ExpandMoreIcon />}
+       
       >
         Home
       </Button>
-      {/* <Menu
-        id="basic-menu-recent"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button-recent'
-        }}
-      >
-        <MenuItem>
-          <ListItemText onClick={() => {
-            history.push('/')
-          }} inset>Home</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText inset>List card</ListItemText>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText inset>Footer</ListItemText>
-        </MenuItem>
-
-      </Menu> */}
+ 
     </Box>
   )
 }

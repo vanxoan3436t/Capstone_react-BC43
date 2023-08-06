@@ -1,0 +1,49 @@
+//theme light-dark
+[data-mui-color-scheme="dark"] {
+
+  .header,
+  .list-product, .card ,.footer {
+    background: $bg-gradient-dark-0;
+  }
+
+  .header-login,.back-to-top{
+    background:$bg-gradient-dark-3 ;
+  }
+  .carousel-home
+ {
+    background: $bg-gradient-dark-1;
+
+  }
+
+  .carousel-item-right {
+    span {
+      background: $bg-gradient-dark-2;
+      
+    }
+
+    button {
+      background: $bg-gradient-dark-3;
+    }
+  }
+
+  //color
+  .card-item {
+    .card {
+      color: $text-c0-white;
+      .card-body {
+        .rating-button {
+          button {
+            color: $text-c0-white;
+            background: $bg-gradient-dark-3;
+          }
+
+          span {
+            background: $bg-gradient-dark-2;
+          }
+        }
+      }
+    }
+  }
+
+
+}

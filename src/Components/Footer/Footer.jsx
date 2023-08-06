@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className='footer'>
       <div className="row container">
-        <div className="col-4">
+        <div className="col-sm-4">
           <h3>GET HELP</h3>
           <ul>
             <li>Home</li>
@@ -14,7 +14,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="col-4">
+        <div className="col-sm-4">
           <h3>SUPPORT</h3>
           <ul>
             <li>About</li>
@@ -24,17 +24,17 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="col-4">
+        <div className="col-sm-4">
           <h3>REGISTER</h3>
           <ul>
-            <li>register</li>
-            <li>login</li>
+            <li>Register</li>
+            <li>Login</li>
         
           </ul>
         </div>
       </div>
       <div className="copy-right ">
-        <p className='container '>© 2022 Cybersoft All Rights Reserved | Design Theme by Trương Tấn Khải.</p>
+        <p className='container '>© 2022 Cybersoft All Rights Reserved | Design Theme by Hoàng Văn Soạn.</p>
       </div>
     </div>
   )
