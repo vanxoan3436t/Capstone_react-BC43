@@ -2,15 +2,20 @@
 [data-mui-color-scheme="dark"] {
 
   .header,
-  .list-product, .card ,.footer {
+  .list-product,
+  .card,
+  .footer {
     background: $bg-gradient-dark-0;
   }
 
-  .header-login,.back-to-top{
-    background:$bg-gradient-dark-3 ;
+  .header-login,
+  .back-to-top,.btn-main {
+    background: $bg-gradient-dark-3 ;
   }
-  .carousel-home
- {
+
+  .carousel-home,
+  .profile,
+  .profile-input p,.profile-input input,.profile-body .profile-body-title h3 {
     background: $bg-gradient-dark-1;
 
   }
@@ -18,7 +23,7 @@
   .carousel-item-right {
     span {
       background: $bg-gradient-dark-2;
-      
+
     }
 
     button {
@@ -30,6 +35,7 @@
   .card-item {
     .card {
       color: $text-c0-white;
+
       .card-body {
         .rating-button {
           button {
@@ -45,5 +51,8 @@
     }
   }
 
+  .profile-input p svg, .profile-input input,.gender span,.copy-right p{
+    color: $text-c0-white!important;
+  }
 
 }

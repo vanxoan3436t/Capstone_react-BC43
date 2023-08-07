@@ -19,11 +19,8 @@ export default function Home() {
 	}, [])
 
 	return (<>
-	
 			<CarouselHome />
 		<ListCard/>
-
-	
 		</>
 	)
 }

@@ -15,19 +15,6 @@ const initStateUserLogin = () => {
   return userLoginInit;
 }
 
-// const getInfoUser =() =>{
-// let infoUser = {
-// email: '',
-// password:'',
-// name:'',
-// gender:'',
-// phone:''
-// }
-// if (getStorageJSON(USER_LOGIN)) {
-//   infoUser = getStorageJSON(USER_LOGIN);
-// }
-// return infoUser;
-// }
 const initialState = {
   userLogin: initStateUserLogin(),
   userProfile: {
@@ -73,11 +60,8 @@ export const loginActionApi = (userLogin) => {
       dispatch(action);
       // thành công thì lưu vào local 
       saveStorageJSON(USER_LOGIN, res.data.content)
-
       //SAu khi đăng nhập thành công thì chuyển hướng trang sang profile
-      history.push('/profile')
-
-
+      history.push('/')
     } catch (err) {
       alert(err.response?.data.message);
     }

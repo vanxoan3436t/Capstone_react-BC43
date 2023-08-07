@@ -2,18 +2,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;}
+  font-family: 'Roboto', sans-serif;
+}
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
 }
 
-body{
-position: static;
-padding-right: 0!important;
-overflow: unset!important;
+body {
+  position: static;
+  padding-right: 0 !important;
+  overflow: unset !important;
 }
+
 a {
   text-decoration: none;
 }
@@ -25,6 +27,7 @@ li {
 p {
   margin-bottom: 0px;
 }
+
 //<SidebarJS header>
 .closeBar,
 .openBar {
@@ -38,6 +41,10 @@ p {
 
 .none {
   display: none;
+}
+
+.active{
+  display: block!important;
 }
 
 .btn_navbar {
@@ -65,19 +72,29 @@ h2 {
   padding: 10px 0px;
 }
 
+
 .btn-main {
-  width: 100px;
-  height: 40px;
-  background-color: #6200EE;
-  color: #fff;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+  height: 43px;
+  width: 110px;
+  background: $bg-gradient-light-4 ;
+  color: $text-c0-white;
   border-radius: 50px;
+  transition: all .5;
 
-  &:hover {
-    background-color: #6200EE;
+  &:hover .icon-button svg {
+    transform: translateX(-10px);
+    animation: toRight 1s linear 0s infinite;
+    transition: all .5s;
+  }
 
-    color: $text-c0-white;
-    transition: .5s;
-    animation: upDownBtn 1s linear 0s infinite;
+  .icon-button {
+    svg {
+      font-size: 1.2rem;
+
+    }
   }
 }
 
@@ -134,22 +151,22 @@ h2 {
     flex-direction: column;
     margin-bottom: 30px;
   }
+
   div {
     line-height: 35px;
   }
 }
 
-@keyframes upDownBtn {
+@keyframes toRight {
   0% {
-    transform: translateY(0);
+    transform: translateX(8px);
   }
 
   50% {
-    transform: translateY(10px);
+    transform: translateX(-8px);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateX(8px);
   }
-
 }

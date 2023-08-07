@@ -6,13 +6,18 @@
     top: 0;
     left: 0;
     transition: all .5s ease;
-    
+    .logo-main{
+        img{
+            width: 65px;
+            height: 45px;    
+            border-radius: 25%;
+        }
+    }
     .header-menu{
         @media screen and (max-width:991.98px){
             margin-right: 0!important;
         }
     }
-   
 }
 .header-login{
     background:$bg-gradient-light-4;

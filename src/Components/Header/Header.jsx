@@ -26,6 +26,7 @@ import ModeSelect from '../ModeSelect/ModeSelect';
 import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { NavLink } from 'react-router-dom';
 
 // START SEARCH
 const Search = styled('div')(({ theme }) => ({
@@ -209,7 +210,7 @@ export default function Header() {
 
         }}>
           <Toolbar >
-            <Button variant='h1' sx={{
+            {/* <Button variant='h1' sx={{
               fontSize: '22px',
               borderRadius: '30%',
               // color: (theme) => theme.palette.mode === 'dark' ? ,
@@ -220,7 +221,10 @@ export default function Header() {
             }}
               startIcon={<AllInclusiveIcon />}
               onClick={() => { history.push('/') }}
-            >Shoes</Button>
+            >Shoes</Button> */}
+           <NavLink className='logo-main' to='/'>
+           <img src="./img/ShopShoes-Logo.png" alt="logo" />
+           </NavLink>        
             {/*Menu Mobile */}
             <Box>
               <Button

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import './helpers/mixin';
 @import './helpers/variables';
-@import './base/customize';
+
 @import '../scss/layouts/carts';
 @import '../scss/layouts/home';
 @import '../scss/base/header';
@@ -13,3 +13,4 @@
 @import '../scss/layouts/home';
 @import '../scss/themes/LightDark';
 @import '../scss/component/BackToTop';
+@import './base/customize';
