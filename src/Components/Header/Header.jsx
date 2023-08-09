@@ -78,17 +78,15 @@ export default function Header() {
         <Box sx={{
           flexGrow: 0, position: 'relative',
         }}>
-          <IconButton sx={{
-            p: 0,
-
-            '&:hover .MuiSvgIcon-root': {
-              opacity: 1,
-              right: { md: '-28px', xs: '-44px' },
-              transition: 'all .5s'
-            },
-          }}>
+          <Box sx={{
+              p: 0,
+              '&:hover .MuiSvgIcon-root': {
+                opacity: 1,
+                right: { md: '-28px', xs: '-44px' },
+                transition: 'all .5s'
+              },
+            }}>
             <Avatar onClick={() => {
-
               history.push('/profile')
             }} alt="Remy Sharp" src="https://gaixinhbikini.com/wp-content/uploads/2022/09/gai-dep-china.jpg" />
             <LogoutIcon
@@ -105,7 +103,7 @@ export default function Header() {
                 transition: 'all .5s',
                 translate: { md: 'unset', xs: '22px 0' }
               }} />
-          </IconButton>
+          </Box>
         </Box>
       </Box >
     }
@@ -200,9 +198,9 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static' className={`header sticky-on ${scrollPosition > 64 ? 'sticky' : ''}` }
+      <AppBar position='static' className={`header sticky-on ${scrollPosition > 64 ? 'sticky' : ''}`}
         sx={{
-          '&.MuiPaper-root': { boxShadow: 'none'}
+          '&.MuiPaper-root': { boxShadow: 'none' }
         }}
       >
         <Container sx={{
@@ -222,9 +220,9 @@ export default function Header() {
               startIcon={<AllInclusiveIcon />}
               onClick={() => { history.push('/') }}
             >Shoes</Button> */}
-           <NavLink className='logo-main' to='/'>
-           <img src="./img/ShopShoes-Logo.png" alt="logo" />
-           </NavLink>        
+            <NavLink className='logo-main' to='/'>
+              <img src="./img/ShopShoes-Logo.png" alt="logo" />
+            </NavLink>
             {/*Menu Mobile */}
             <Box>
               <Button

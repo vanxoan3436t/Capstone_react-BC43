@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { unstable_HistoryRouter as HistoryRouter, Route, Routes } from 'react-router-dom';
+import { unstable_HistoryRouter as HistoryRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomeTemplate from './Templates/HomeTemplate';
 import Login from './Pages/Login';
 import Search from './Pages/Search';
@@ -34,12 +34,14 @@ root.render(
                         <Route path='detail' >
                             <Route path=':id' element={<Detail />}></Route>
                         </Route>
-                        <Route path='login' element={<Login />}></Route>
+
                         <Route path='register' element={<Register />}></Route>
                         <Route path='profile' element={<Profile />}></Route>
                         <Route path='carts' element={<Carts />}></Route>
                         <Route path='details' element={<Detail />}></Route>
+                        <Route path='*' element={<Navigate to='/' />}></Route>
                     </Route>
+                    <Route path='login' element={<Login />}></Route>
                 </Routes>
             </HistoryRouter>
         </CssVarsProvider>

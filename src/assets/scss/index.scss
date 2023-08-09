@@ -2,15 +2,15 @@
 @import './helpers/mixin';
 @import './helpers/variables';
 
-@import '../scss/layouts/carts';
-@import '../scss/layouts/home';
+@import '../scss/pages/carts';
+@import '../scss/pages/home';
 @import '../scss/base/header';
-@import '../scss/layouts/register';
-@import '../scss/layouts/login';
-@import '../scss/layouts/profile';
+@import '../scss/pages/register';
+@import '../scss/pages/login';
+@import '../scss/pages/profile';
 @import '../scss/base/footer';
-@import '../scss/layouts/search';
-@import '../scss/layouts/home';
+@import '../scss/pages/search';
+@import '../scss/pages/home';
 @import '../scss/themes/LightDark';
 @import '../scss/component/BackToTop';
 @import './base/customize';

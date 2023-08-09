@@ -2,6 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { http, getStorageJSON, saveStorageJSON, USER_LOGIN, USER_UPDATE } from '../../util/config';
 import { history } from '../../index';
+import swal from 'sweetalert';
 
 const initStateUserLogin = () => {
   let userLoginInit = {
@@ -57,13 +58,17 @@ export const loginActionApi = (userLogin) => {
     try {
       const res = await http.post(`/api/Users/signin`, userLogin);
       const action = loginAction(res.data.content);
+      console.log('action.payload', action?.payload)
       dispatch(action);
-      // thành công thì lưu vào local 
       saveStorageJSON(USER_LOGIN, res.data.content)
-      //SAu khi đăng nhập thành công thì chuyển hướng trang sang profile
-      history.push('/')
+      history.push('/profile')
     } catch (err) {
-      alert(err.response?.data.message);
+        swal({
+          title:err.response?.data?.message,
+          icon:'warning',
+          timer:2000,
+        });
+      
     }
   }
 }
@@ -78,7 +83,12 @@ export const profileActionApi = (userUpdate) => {
       // thành công thì lưu vào local 
       saveStorageJSON(USER_LOGIN, res.data.content)
     } catch (err) {
-      alert(err.response?.data.message);
+        swal({
+          title:err.response.data?.message,
+          icon:'success',
+          timer:2000,
+        });
+      
     }
   }
 }

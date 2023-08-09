@@ -1,6 +1,76 @@
 //theme light-dark
+[data-mui-color-scheme="light"] {
+
+  //bg login
+  .wrapper,
+  .show-element .bg-animate,
+  .wrapper,
+  .show-element .bg-animate2 {
+    background: linear-gradient(to top, #6dd5fa, #005aa7, ) !important;
+  }
+
+  .wrapper,
+  .bg-animate,
+  .wrapper,
+  .bg-animate2 {
+    background: linear-gradient(to bottom, #6dd5fa, #005aa7) !important;
+  }
+
+  .bg-animate2 {
+    @media screen and (max-width:768px) {
+      background: linear-gradient(to top, #6dd5fa, #005aa7) !important;
+    }
+  }
+}
+
 [data-mui-color-scheme="dark"] {
 
+  //bg login
+  .super-login {
+    background: #283e51;
+  }
+
+  .wrapper,
+  .show-element .bg-animate,
+  .wrapper,
+  .show-element .bg-animate2 {
+    background: $bg-gradient-dark-0 ;
+  }
+
+
+  .wrapper,
+  .bg-animate,
+  .wrapper,
+  .bg-animate2 {
+    background: $bg-gradient-dark-1 ;
+  }
+
+  .bg-animate2 {
+    background: $bg-gradient-dark-0 ;
+  }
+
+
+  .btn-login {
+    &::before {
+      background: linear-gradient(#2c3e50, #bdc3c7, #2c3e50, #bdc3c7) !important;
+    }
+  }
+
+  .logreg-link p a,.input-box input:valid ~ i,.input-box input:focus ~ i {
+    color: #283e51 !important;
+  }
+
+  //input
+  .form-check-input:checked {
+    background-color: #355570;
+    border-color: $text-c0-white;
+  }
+
+  .form-check-input:focus {
+    box-shadow: none;
+  }
+
+  // end input
   .header,
   .list-product,
   .card,
@@ -9,13 +79,16 @@
   }
 
   .header-login,
-  .back-to-top,.btn-main {
+  .back-to-top,
+  .btn-main {
     background: $bg-gradient-dark-3 ;
   }
 
   .carousel-home,
   .profile,
-  .profile-input p,.profile-input input,.profile-body .profile-body-title h3 {
+  .profile-input p,
+  .profile-input input,
+  .profile-body .profile-body-title h3 {
     background: $bg-gradient-dark-1;
 
   }
@@ -51,8 +124,11 @@
     }
   }
 
-  .profile-input p svg, .profile-input input,.gender span,.copy-right p{
-    color: $text-c0-white!important;
+  .profile-input p svg,
+  .profile-input input,
+  .gender span,
+  .copy-right p {
+    color: $text-c0-white !important;
   }
 
 }

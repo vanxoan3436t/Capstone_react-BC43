@@ -43,7 +43,7 @@ p {
   display: none;
 }
 
-.active{
+.show-element{
   display: block!important;
 }
 
@@ -156,6 +156,17 @@ h2 {
     line-height: 35px;
   }
 }
+
+
+//input
+.form-check-input:checked {
+  background-color: $bg-c0-primary;
+  border-color: $text-c0-white;
+}
+.form-check-input:focus{
+box-shadow:none ;
+}
+// end input
 
 @keyframes toRight {
   0% {

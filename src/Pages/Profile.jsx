@@ -115,16 +115,16 @@ const Profile = (props) => {
       </div> <hr />
       <div className="profile-body">
         <div className='profile-body-title'>
-          <h3 className='title-order'><span className={`${!classState ? 'active' : ''}`} onClick={() => {
+          <h3 className='title-order'><span className={`${!classState ? 'show-element' : ''}`} onClick={() => {
             toggleClass(false)
           }}>Order history</span> </h3>
-          <h3 className='title-favourite'><span className={`${classState ? 'active' : ''}`} onClick={() => {
+          <h3 className='title-favourite'><span className={`${classState ? 'show-element' : ''}`} onClick={() => {
             toggleClass(true)
           }}>Favourite</span> </h3>
         </div>
 
         <div className="profile-table">
-          <div className={` table-history d-none ${!classState ? 'active' : ''}`} >
+          <div className={` table-history d-none ${!classState ? 'show-element' : ''}`} >
             <table className='table table-hover' >
               <thead>
                 <tr>
@@ -162,7 +162,7 @@ const Profile = (props) => {
             </table>
           </div>
 
-          <div className={`table-love d-none ${classState ? 'active' : ''}`}>
+          <div className={`table-love d-none ${classState ? 'show-element' : ''}`}>
             <table className='table table-hover text-white'>
               <h1>love No content</h1>
             </table>

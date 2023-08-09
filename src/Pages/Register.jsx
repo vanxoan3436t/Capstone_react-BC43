@@ -7,7 +7,6 @@ import * as yup from 'yup';
 const Register = () => {
   const navigate = useNavigate();
   const registerFrm = useFormik({
-
     initialValues: {
       email: '',
       password: '',
@@ -67,13 +66,13 @@ const Register = () => {
         <div className="col-6">
           <div className="form-group">
             <p >Name</p>
-            <input className='form-control' name='name' type="text" placeholder='name' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
+            <input className='form-control'  type="text" placeholder='name' name='name' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
             {registerFrm.errors.name && <p className='p-err alert alert-danger'>{registerFrm.errors.name}</p>}
           </div>
 
           <div className="form-group mt-2">
             <p>Phone</p>
-            <input className='form-control' name='phone' type="number" placeholder='phone' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
+            <input className='form-control'  type="number" placeholder='phone' name='phone' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur}/>
             {registerFrm.errors.phone && <p className='p-err alert alert-danger'>{registerFrm.errors.phone}</p>}
           </div>
           <div className="form-group gender">
