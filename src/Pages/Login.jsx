@@ -28,7 +28,7 @@ export default function Login() {
       email: yup.string().required('email cannot be blank!').email('Email is invalid!'),
       password: yup.string().required('password cannot be blank!').min(5, '5 - 32 characters').max(32, '5 - 32 character'),
       name: yup.string().required('name cannot be blank'),
-      phone: yup.string().required('phone cannot be blank and just use numbers').matches(/(([+]{0,1}\d{2})|\d?)[\s-]?[0-9]{2}[\s-]?[0-9]{3}[\s-]?[0-9]{4}$/gm, 'Phone is invalid!').min(9, '9 number').max(10, '10 number')
+      phone: yup.string().required('phone cannot be blank and just use numbers').matches(/([\+84|84|0]+(3|5|7|8|9|1[2|6|8|9]))+([0-9]{8})\b/, 'Phone is invalid!' ).min(9, '9 number').max(10, '10 number')
     }),
     onSubmit: async (values) => {
       try {

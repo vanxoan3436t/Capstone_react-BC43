@@ -68,5 +68,5 @@ http.interceptors.response.use((res) => {
         alert('Đăng nhập để vào trang này !');
         history.push('/login');
     }
-    return Promise.reject(err)
+    // return Promise.reject(err)
 });

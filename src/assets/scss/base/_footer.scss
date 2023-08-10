@@ -3,7 +3,7 @@
     padding-top: 40px;
 
     .row {
-        color: $text-c0-white;
+        color: $text-c0-dark;
 
     }
 
@@ -13,20 +13,27 @@
     }
 
     .copy-right {
-        // background: $bg-c2-dark;
         height: 74px;
-
+        @media screen and (max-width:767.98px) {
+            height: 55px;
+            padding: 15px 0;
+        }
+        @media screen and (max-width:414.98px) {
+            height: 74px;
+        
+        }
         p {
-            @include text($fs-2xl, $fw-normal, $text-c0-dark, $lh-c2);
+            @include text($fs-2xl, $fw-normal,$text-c0-dark, $lh-c2);
             padding-top: 26px;
             text-align: center;
 
             @media screen and (max-width:767.98px) {
                 font-size: 18px;
+                padding-top: 0;
             }
 
-            @media screen and (max-width:767.98px) {
-                font-size: 0.9rem;
+            @media screen and (max-width:575.98px) {
+                font-size: 15px;
             }
         }
     }

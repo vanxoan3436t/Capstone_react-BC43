@@ -204,6 +204,7 @@
                 @media screen and (max-width:1198.98px) {
                     margin-left: 0px;
                 }
+
                 th,
                 td {
                     border-right: 0.8px solid #fff;
@@ -216,8 +217,9 @@
                 thead {
                     tr {}
                 }
+
                 &>tbody>tr:hover>* {
-          background:#0000003d;
+                    background: #0000003d;
                     color: $text-c0-white;
                 }
             }

@@ -15,12 +15,13 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		getProductApi();
+		getProductApi(); 
 	}, [])
 
 	return (<>
 			<CarouselHome />
 		<ListCard/>
+	
 		</>
 	)
 }

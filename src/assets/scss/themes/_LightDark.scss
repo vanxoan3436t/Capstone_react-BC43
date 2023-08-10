@@ -37,7 +37,6 @@
     background: $bg-gradient-dark-0 ;
   }
 
-
   .wrapper,
   .bg-animate,
   .wrapper,
@@ -56,7 +55,9 @@
     }
   }
 
-  .logreg-link p a,.input-box input:valid ~ i,.input-box input:focus ~ i {
+  .logreg-link p a,
+  .input-box input:valid~i,
+  .input-box input:focus~i,.price span span,.quantily-number  {
     color: #283e51 !important;
   }
 
@@ -74,13 +75,14 @@
   .header,
   .list-product,
   .card,
-  .footer {
+  .footer,
+  .detail .detail-card .detail-card-left{
     background: $bg-gradient-dark-0;
   }
 
   .header-login,
   .back-to-top,
-  .btn-main {
+  .btn-main,  .carousel-item-right button, .rating-button button ,.btn-add-to-cart ,.btn-plus{
     background: $bg-gradient-dark-3 ;
   }
 
@@ -88,46 +90,23 @@
   .profile,
   .profile-input p,
   .profile-input input,
-  .profile-body .profile-body-title h3 {
+  .profile-body .profile-body-title h3,
+  .carts,
+  .detail ,.bg-support  {
     background: $bg-gradient-dark-1;
 
   }
 
-  .carousel-item-right {
-    span {
-      background: $bg-gradient-dark-2;
-
-    }
-
-    button {
-      background: $bg-gradient-dark-3;
-    }
+  .carousel-item-right span,
+  .rating-button span,.btn-size{
+    background: $bg-gradient-dark-2;
   }
 
   //color
-  .card-item {
-    .card {
-      color: $text-c0-white;
-
-      .card-body {
-        .rating-button {
-          button {
-            color: $text-c0-white;
-            background: $bg-gradient-dark-3;
-          }
-
-          span {
-            background: $bg-gradient-dark-2;
-          }
-        }
-      }
-    }
-  }
-
   .profile-input p svg,
   .profile-input input,
   .gender span,
-  .copy-right p {
+  .footer h3,.footer li,.copy-right p,.rating-button button,.card,.detail-card-right {
     color: $text-c0-white !important;
   }
 

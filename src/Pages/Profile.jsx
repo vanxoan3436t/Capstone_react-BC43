@@ -30,7 +30,6 @@ const Profile = (props) => {
 
   useEffect(() => {
     getProfileApi();
-
   }, [])
 
 

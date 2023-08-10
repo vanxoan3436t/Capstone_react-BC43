@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { USER_LOGIN, clearStorage } from '../../util/config';
+import { USER_LOGIN, clearStorage, saveStorageJSON } from '../../util/config';
 import { history } from '../../index';
 //Material
 import { styled, alpha } from '@mui/material/styles';
@@ -23,10 +23,9 @@ import Woman from './Menu/Woman';
 import Kid from './Menu/Kid';
 import HomeMenu from './Menu/HomeMenu';
 import ModeSelect from '../ModeSelect/ModeSelect';
-import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams, useSearchParams } from 'react-router-dom';
 
 // START SEARCH
 const Search = styled('div')(({ theme }) => ({
@@ -44,7 +43,6 @@ const Search = styled('div')(({ theme }) => ({
     width: 'auto',
   },
 }));
-
 const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: '100%',
@@ -79,13 +77,13 @@ export default function Header() {
           flexGrow: 0, position: 'relative',
         }}>
           <Box sx={{
-              p: 0,
-              '&:hover .MuiSvgIcon-root': {
-                opacity: 1,
-                right: { md: '-28px', xs: '-44px' },
-                transition: 'all .5s'
-              },
-            }}>
+            p: 0,
+            '&:hover .MuiSvgIcon-root': {
+              opacity: 1,
+              right: { md: '-28px', xs: '-44px' },
+              transition: 'all .5s'
+            },
+          }}>
             <Avatar onClick={() => {
               history.push('/profile')
             }} alt="Remy Sharp" src="https://gaixinhbikini.com/wp-content/uploads/2022/09/gai-dep-china.jpg" />
@@ -100,6 +98,7 @@ export default function Header() {
                 top: '8px', right: 0,
                 opacity: { md: 0, xs: 1 },
                 color: '#d32f2f',
+                cursor: 'pointer',
                 transition: 'all .5s',
                 translate: { md: 'unset', xs: '22px 0' }
               }} />
@@ -119,7 +118,6 @@ export default function Header() {
     }}>Đăng Nhập</Button>
   }
   // end Login
-
 
   // header fix
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -292,6 +290,10 @@ export default function Header() {
                 sx={{
                   margin: '0 5px',
                   padding: '0 12px',
+                }}
+                onClick={() => {
+                  history.push('/carts');
+                  //có thể làm đg ở trang nào thì tới trang đó luôn k về trang chủ
                 }}
               >
                 <Badge badgeContent={1} color="error">

@@ -1,8 +1,67 @@
-.carts{
-    table{
+.carts {
+    background: $bg-gradient-light-1;
+    padding-top: 64px;
+    height: 500px;
 
-        thead{
-            background-color: $bg-c2-dark;
+    h2 {
+        color: $text-c0-white;
+    }
+
+    table {
+        margin-bottom: 0;
+        text-align: center;
+        color: $text-c0-white;
+
+        @media screen and (max-width:1198.98px) {
+            margin-left: 0px;
         }
+
+        th,
+        td {
+            border-right: 0.8px solid #fff;
+
+            &:last-of-type {
+                border-right: none;
+            }
+        }
+
+        button {
+            color: $text-c0-white;
+        }
+
+        &>tbody>tr:hover>* {
+            background: #0000003d;
+            color: $text-c0-white;
+        }
+
+     
     }
 }
+
+.quantily-number {
+    display: inline-block;
+    margin: 0 8px;
+    font-size: 20px;
+  }
+  
+  .btn-plus,
+  .btn-minus {
+    padding: 0px 7px;
+  }
+  
+  .btn-table-edit,
+  .btn-plus,
+  .btn-minus {
+    background: $bg-gradient-light-4;
+  }
+  
+  .btn-minus,
+  .btn-table-submit {
+    background: linear-gradient(to right, #fdc830, #f37335);
+  
+  }
+  
+  .btn-table-delete {
+    margin-left: 6px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b)
+  }

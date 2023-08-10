@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useSelector } from "react-redux";
+import { history } from "../..";
 
 function CarouselHome() {
   const { arrProduct } = useSelector(state => state.productReducer);
@@ -17,7 +18,9 @@ function CarouselHome() {
         <div className="carousel-item-right">
           <h3>{shoes.name}</h3>
           <span>{shoes.price} <i style={{color:'#e51b07'}}>$</i></span>
-          <button className="btn">Buy Now</button>
+          <button className="btn" onClick={() => {
+            
+                history.push(`/detail/${shoes.id}`)}}>Buy Now</button>
         </div>
       </div>
     })

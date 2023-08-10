@@ -1,6 +1,7 @@
 .carousel-home {
   background: $bg-gradient-light-1;
-padding-top: 64px;
+  padding-top: 64px;
+
   .slick-slider {
 
     .slick-prev,
@@ -76,29 +77,62 @@ padding-top: 64px;
 }
 
 .list-product {
+  position: relative;
+  overflow: hidden;
   background: $bg-gradient-light-2;
 
   h1 {
     font-size: 3rem;
     color: $text-c0-white ;
+    margin-bottom: 20px;
 
   }
 
   .card-item {
+    @media screen and (max-width:767.98px) {
+      margin: 0 20px;
+      width: 93vw;
+    }
+
+    @media screen and (max-width:575.98px) {
+      margin: 0 11px;
+      width: 93vw;
+    }
+
     .card {
+      @media screen and (max-width:767.98px) {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      @media screen and (max-width:414px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      img {
+        width: 100%;
+
+        @media screen and (max-width:767.98px) {
+          width: 40vw;
+        }
+      }
 
       .card-body {
         @media screen and (max-width:767.98px) {
-          transform: translateY(-10vw);
+          padding: 0 0 0 0.5rem;
+
+          h5 {
+            font-size: 28px;
+
+            @media screen and (max-width:575.98px) {
+              font-size: 1.2rem;
+            }
+          }
         }
 
-        h5 {
-          @media screen and (max-width:767.98px) {
-            font-size: 2.2rem;
-          }
-          @media screen and (max-width:575.98px) {
-            font-size: 1.2rem;
-          }
+        @media screen and (max-width:414.98px) {
+          padding: 1rem;
         }
 
         .rating-button {
@@ -140,5 +174,15 @@ padding-top: 64px;
 
   .card {
     background: $bg-gradient-light-0;
+    z-index: 1;
+  }
+
+  .bg-support {
+    height: 50%;
+    width: 100vw;
+    background-image: linear-gradient(to top, #2980b9, #6dd5fa, #ffffff00) !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }

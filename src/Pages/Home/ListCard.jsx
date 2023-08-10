@@ -19,17 +19,16 @@ function ListCard() {
   return (<div className='container-fluid list-product'>
     <div className='row '>
       <h1>Product Future</h1>
-    {arrProduct.map((item) => {
+    {arrProduct?.map((item) => {
       return <div className='col-12 col-md-6 col-lg-4 col-xl-3 mb-5 card-item' key={item.id}>
         <div className="card">
-          <img src={item.image} alt="..." className='w-100 card-img' />
+          <img src={item.image} alt="..." className='card-img' />
           <div className="card-body">
             <h5>{item.name}</h5>
             <p>{item.description.length > 50 ? item.description.substr(0, 50) + '...' : item.description}</p>
             <div className='rating-button'>
               <button className='btn' onClick={() => {
                 history.push(`/detail/${item.id}`)
-                saveStorageJSON(PRODUCT, item)
               }}>
 
                 Buy now </button>
@@ -41,6 +40,7 @@ function ListCard() {
     })}
 
   </div>
+  <div className="bg-support"></div>
   </div>
   )
 }

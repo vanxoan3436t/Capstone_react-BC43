@@ -1,0 +1,133 @@
+.detail {
+  padding-top: 94px;
+  background: $bg-gradient-light-1;
+
+  .detail-card {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    @media screen and (max-width: 1200px) {
+      gap: 40px;
+    }
+
+    @media screen and (max-width:575.98px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .detail-card-left {
+      background: $bg-gradient-light-2 ;
+      height: 405px;
+      border-radius: 20px;
+
+      @media screen and (max-width:767.98px) {
+        height: 340px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+      @media screen and (max-width:414px) {
+        height: 275px;
+      }
+      img {
+        width: 100%;
+
+        @media screen and (max-width:575.98px) {
+          width: 80vw;
+        }
+      }
+    }
+
+    .detail-card-right {
+      color: $text-c0-dark;
+
+      @media screen and (max-width: 576px) {
+        padding: 0 15px;
+
+      }
+
+      & * {
+        margin: 8px 0;
+      }
+
+      button {
+        color: $text-c0-white;
+      }
+
+      h2 {
+        margin-top: 0;
+        font-weight: 500;
+        @media screen and (max-width:991.98px) {
+          font-size: 32px;
+         
+        }
+        @media screen and (max-width:767.98px) {
+          font-size: 28px;
+        }
+        @media screen and (max-width:414.98px) {
+          font-size: 24px;
+        }
+      }
+
+      .shoes-size {
+        .btn-size {
+          background: $bg-gradient-light-3;
+          margin-right: 7px;
+          @media screen and (max-width:375px) {
+           padding: 5px 8px;
+          }
+        }
+      }
+
+      .price {
+        span {
+          span {
+            color: red;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .shoes-quantity {
+        button {
+          line-height: 27px;
+          font-size: 1.5rem;
+        }
+
+        .quantily-number {
+          margin: 0 8px;
+          font-weight: 700;
+          color: red;
+        }
+      }
+
+
+      .btn-add-to-cart {
+        background: $bg-gradient-light-4;
+
+        a {
+          color: $text-c0-white;
+        }
+      }
+    }
+  }
+
+  .related-products {
+    padding: 70px 0 50px;
+
+    @media screen and (max-width:767.98px) {
+      padding: 50px 0 0px;
+    }
+
+    .list-product {
+      background: none !important;
+
+      .title-related {
+        text-align: center;
+        color: $text-c0-white;
+        margin-bottom: 35px;
+      }
+
+    }
+  }
+}

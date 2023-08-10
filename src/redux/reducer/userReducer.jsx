@@ -52,23 +52,20 @@ export const { loginAction, getProfileAction, postUpdate} = userReducer.actions
 export default userReducer.reducer
 
 //----------action gọi api -------\
-
 export const loginActionApi = (userLogin) => {
   return async (dispatch) => {
     try {
       const res = await http.post(`/api/Users/signin`, userLogin);
       const action = loginAction(res.data.content);
-      console.log('action.payload', action?.payload)
       dispatch(action);
       saveStorageJSON(USER_LOGIN, res.data.content)
-      history.push('/profile')
-    } catch (err) {
+      history.push('/')
+    } catch (err) { 
         swal({
           title:err.response?.data?.message,
           icon:'warning',
           timer:2000,
         });
-      
     }
   }
 }
@@ -78,7 +75,6 @@ export const profileActionApi = (userUpdate) => {
     try {
       const res = await http.post(`/api/Users/updateProfile`, userUpdate);
       const action = postUpdate(res.data.content);
-      //const action = {type:'userReducer/loginAction', payload: res.data.content}
       dispatch(action);
       // thành công thì lưu vào local 
       saveStorageJSON(USER_LOGIN, res.data.content)

@@ -1,140 +1,110 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { history } from '../index';
-import {  getDetailActionApi } from '../redux/reducer/productReducer';
-import { PRODUCT, getStorageJSON } from '../util/config';
+import { getDetailActionApi } from '../redux/reducer/productReducer';
 
 export default function Detail() {
-    const proDetail = useSelector(state => state.productReducer.proDetail);
-    const dispatch = useDispatch();
-    const detail = getStorageJSON(PRODUCT)
-    const getDetailApi = (id) => {
-        const action = getDetailActionApi(detail.id)//getDetailActionApi(id) ?
-        dispatch(action);
-
-    }
-    const getNewDetail = (id) => {
-        const action = getDetailActionApi(id)
-        dispatch(action);
-    }
-
+    const keyword = useParams()
     const [quantily, setQuantily] = useState(1)
-    
-    useEffect(() => {
-        getDetailApi()
+    const  proDetail  = useSelector(state => state.productReducer.proDetail);
 
-    }, [])
 
-    return (
-        <div>
-            <section className="carousel">
-                <div className="container">
-                    <div className="d-flex">
-                        <div className="pics" >
-                            <img src={proDetail.image} alt="..." />
-                        </div>
-                        <div className="title" id="title00">
-                            <h1>   {proDetail.name}</h1>
-                            <p>
-                                {proDetail.description}
-                            </p>
-                            <h2>Available size</h2>
-                            <div className="shoes-size" >
+    const dispatch = useDispatch();
+    const getDetailApi = () => {
+        const action = getDetailActionApi(keyword.id);
+        console.log('action.payload', action.payload)
+        dispatch(action);
 
-                                {/* {proDetail.size.map((value,index)=> {
-                                 return <button key={index}>{value}</button>
-                                })} */}
-                                {proDetail.size}
+    }
+
+    const renderSizeProDetail = () => {
+        if (proDetail) {
+            return proDetail?.size?.map((value, index) => {
+                return <button className='btn btn-size' key={index} >{value}</button>
+            })
+        }
+        return
+    }
+    const renderRelatedProducts = () => {
+        if (proDetail) {
+            return proDetail?.relatedProducts?.map((value, index) => {
+                return <div key={index} className="col-12 col-md-6 col-lg-4 mb-5 card-item">
+                    <div className="card" >
+                        <img src={value.image} alt="..." />
+                        <div className="card-body">
+                            <h5>{value.name}</h5>
+                            <i> {value.shortDescription.length > 50 ? value.shortDescription.substr(0, 50) + '...' : value.shortDescription}</i>
+                            <div className='rating-button'>
+                                <button className='btn' onClick={() => {
+                                    history.push(`/detail/${value.id}`)
+                                }}>
+                                    Buy now </button>
+                                <span className='price'> {value.price}$</span>
                             </div>
-                            <div className="prices">
-                                <p id="get-price">{proDetail.price} $</p>
-
-                            </div>
-                            <div className="shoes-quantity">
-                                <button className="btn-plus fs-4" id="btn-plus" onClick={() => {
-                                    setQuantily(quantily + 1);
-                                    if (quantily === 10) {
-                                        alert('có tiền không mà mua nhiều thế')
-                                    }
-                                }}>+</button>
-                                <p id="quantity">{quantily}</p>
-                                <button className="btn-plus fs-4" id="btn-minus" onClick={() => {
-
-                                    setQuantily(quantily - 1);
-                                    if (quantily < 1) {
-                                        alert('mua giúp shop 1 cái đi please!')
-                                        return setQuantily(1)
-                                    }
-
-                                }}>-</button>
-                            </div>
-                            <button className="btn-add-to-cart" onClick={() => {
-                                history.push('/carts')
-                            }}>
-                                <NavLink >Add to cart</NavLink>
-                            </button>
                         </div>
                     </div>
                 </div>
+            })
+        }
+    }
+
+    useEffect(() => {
+        getDetailApi()
+    }, [keyword.id])
+
+    return (
+        <div className="detail">
+            <section className="detail-card container">
+                    <div className="detail-card-left" >
+                        <img src={proDetail.image} alt="..." />
+                    </div>
+                    <div className="detail-card-right" >
+                        <h2> {proDetail.name}</h2>
+                        <p>
+                            {proDetail.description}
+                        </p>
+                        <h4>Available size</h4>
+                        <div className="shoes-size" >
+                            {renderSizeProDetail()}
+                        </div>
+                        <div className="price">
+                            <span>Price: <span>{proDetail.price * quantily}$</span></span>
+                        </div>
+                        <div className="shoes-quantity">
+                            <button className="btn btn-plus"  onClick={() => {
+                                setQuantily(quantily + 1);
+
+                                if (quantily === 10) {
+                                    alert('có tiền không mà mua nhiều thế')
+                                }
+                            }}>+</button>
+                            <span className='quantily-number'>{quantily}</span>
+                            <button className="btn btn-minus"  onClick={() => {
+
+                                setQuantily(quantily - 1);
+                                if (quantily < 1) {
+                                    alert('mua giúp shop 1 cái đi please!')
+                                    return setQuantily(1)
+                                }
+
+                            }}>-</button>
+                        </div>
+                        <button className="btn btn-add-to-cart" onClick={() => {
+                            // history.push('/carts')ss
+                        }}>
+                            <NavLink >Add to cart</NavLink>
+                        </button>
+                    </div>
+            
+
             </section>
 
-            <section className="products">
-                <div className="container">
-                    <h3 className="title">-Related Products-</h3>
-                    <div className="list-item" id="extra-relatedSP">
-                        <div className="col col-2 mb-5" >
-                            <div className="card item-1" id="related-item-1">
-                                <img src={proDetail.image} alt="..." />
-                                <div className="card-body">
-                                    <div className="name-price">
-                                        <h1 className="name">
-                                            {proDetail.name}
-                                            <br />
-                                            <i> {proDetail.shortDescription}</i>
-                                        </h1>
-                                    </div>
-                                    <div className="rating-button">
-                                        <button className=" btn-buy" onClick={() => {
-                                            history.push(`/detail/${proDetail.id}`)
-                                            getNewDetail(proDetail.id)
-                                        }}>
-                                            Buy now
-                                        </button>
-                                        <p className="price"> {proDetail.price}$</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* {proDetail.relatedProducts.map((value) => {
-                            return <div className="col col-2 mb-5" key={value.id}>
-                                <div className="card item-1" id="related-item-1">
-                                    <img src={value.image} alt="..." />
-                                    <div className="card-body">
-                                        <div className="name-price">
-                                            <h1 className="name">
-                                                {value.name}
-                                                <br />
-                                                <i> {value.shortDescription}</i>
-                                            </h1>
-                                        </div>
-                                        <div className="rating-button">
-                                            <button className=" btn-buy" onClick={() => {
-                                                history.push(`/detail/${value.id}`)
-                                                getNewDetail(value.id)
-                                                saveStorageJSON(PRODUCT,value)
-                                            }}>
-                                                Buy now
-                                            </button>
-                                            <p className="price"> {value.price}$</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        })} */}
-
+            <section className="related-products">
+                <div className="container list-product">
+                    <h2 className="title-related">-Related Products-</h2>
+                    <div className='row'>
+                        {renderRelatedProducts()}
                     </div>
 
                 </div>

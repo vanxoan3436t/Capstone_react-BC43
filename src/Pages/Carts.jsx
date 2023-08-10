@@ -16,12 +16,14 @@ const Carts = (props) => {
   }, [])
  
     return (
-      <div className='carts'>
-        <h2>Carts</h2> <hr />
+      <div className='carts container-fluid'>
+        <h2>Carts</h2> 
+
         <table className='table table-hover'>
+       
           <thead>
             <tr>
-              <th><i className="fa-solid fa-check"></i></th>
+              <th><i className="fa-solid fa-check"></i>  </th>
               <th>id</th>
               <th>img</th>
               <th>name</th>
@@ -29,38 +31,54 @@ const Carts = (props) => {
               <th>quantily</th>
               <th>total</th>
               <th>action</th>
-              <th></th>
+             
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th><i className="fa-solid fa-check"></i></th>
+              <th><input type="checkbox" /></th>
               <th>id</th>
               <th><img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="" style={{ width: '60px' }} /></th>
               <th>Product 1</th>
               <th></th>
               <th>
-                <button className='btn btn-main'><i className='fa fa-plus'></i></button>
-                <span> 1 </span>
-                <button className='btn btn-main'><i className='fa fa-minus'></i></button>
+              <button className='btn btn-plus'><i className='fa fa-plus'></i></button>
+              <span className='quantily-number'> 1 </span>
+                <button className='btn btn-minus'><i className='fa fa-minus'></i></button>
               </th>
               <th>1000$</th>
               <th>
-                <button className='btn btn-main-2'>EDIT</button>
-                <button className='btn btn-danger'>DELETE</button>
+                <button className='btn btn-table-edit'>EDIT</button>
+                <button className='btn btn-table-delete'>DELETE</button>
                 <br />
+                <button className='btn  btn-table-submit mt-2'>Submit Order</button>
 
               </th>
             </tr>
+            <tr>
+              <th><input type="checkbox" /></th>
+              <th>id</th>
+              <th><img src="https://svcy3.myclass.vn/images/adidas-prophere-black-white.png" alt="" style={{ width: '60px' }} /></th>
+              <th>Product 1</th>
+              <th></th>
+              <th>
+              <button className='btn btn-plus'><i className='fa fa-plus'></i></button>
+                <span className='quantily-number'> 1 </span>
+                <button className='btn btn-minus'><i className='fa fa-minus'></i></button>
+              </th>
+              <th>1000$</th>
+              <th>
+              <button className='btn btn-table-edit'>EDIT</button>
+                <button className='btn btn-table-delete'>DELETE</button>
+                <br />
+                <button className='btn btn-table-submit mt-2'>Submit Order</button>
 
+              </th>
+            </tr>
           </tbody>
 
 
         </table>
-
-        <div style={{ justifyContent: 'flex-end', display: 'flex' }}>
-          <button className='btn btn-warning' >SUBMIT ODER</button>
-        </div>
       </div>
     )
   }
