@@ -62,7 +62,7 @@ const Profile = (props) => {
               <div className=" col-md-12 col-lg-6">
 
                 <div className="form-group">
-                  <div className='profile-input'>
+                  <div className='main-input'>
                     <p><MailIcon /></p>
                     <input className='form-control' value={profileFrm?.email} type="email" placeholder=': Email' name='email' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   </div>
@@ -70,7 +70,7 @@ const Profile = (props) => {
 
                 </div>
                 <div className="form-group">
-                  <div className='profile-input'>
+                  <div className='main-input'>
                     <p> <PhoneIcon /></p>
                     <input className='form-control' value={profileFrm?.phone} type="number" placeholder=': Phone' name='phone' onBlur={profileFrm.handleBlur} onInput={profileFrm.handleChange} />
                   </div>
@@ -80,7 +80,7 @@ const Profile = (props) => {
               <div className="col-md-12 col-lg-6">
 
                 <div className="form-group">
-                  <div className='profile-input'>
+                  <div className='main-input'>
                     <p><PersonIcon /></p>
                     <input className='form-control' value={profileFrm?.name} type="text" placeholder=': Name' name='name' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   </div>
@@ -88,7 +88,7 @@ const Profile = (props) => {
                 </div>
 
                 <div className="form-group">
-                  <div className='profile-input'>
+                  <div className='main-input'>
                     <p><LockIcon /></p>
                     <input className='form-control' value={profileFrm?.password} type="password" placeholder=': password' name='password' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   </div>

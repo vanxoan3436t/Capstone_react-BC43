@@ -18,7 +18,7 @@ function ListCard() {
 	}, [])
   return (<div className='container-fluid list-product'>
     <div className='row '>
-      <h1>Product Future</h1>
+      <h1 className='title-main'>Product Future</h1>
     {arrProduct?.map((item) => {
       return <div className='col-12 col-md-6 col-lg-4 col-xl-3 mb-5 card-item' key={item.id}>
         <div className="card">

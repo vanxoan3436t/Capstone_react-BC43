@@ -43,8 +43,8 @@ p {
   display: none;
 }
 
-.show-element{
-  display: block!important;
+.show-element {
+  display: block !important;
 }
 
 .btn_navbar {
@@ -82,7 +82,21 @@ h2 {
   background: $bg-gradient-light-4 ;
   color: $text-c0-white;
   border-radius: 50px;
-  transition: all .5;
+  transition: all .5s;
+
+  span {
+    margin: 0;
+    line-height: 29.69px;
+    font-size: 18px;
+    font-weight: 500;
+    color: $text-c0-white;
+    width: 59px;
+    height: 30.69px;
+  }
+
+  &:hover {
+    color: $text-c0-white;
+  }
 
   &:hover .icon-button svg {
     transform: translateX(-10px);
@@ -130,11 +144,49 @@ h2 {
   }
 }
 
-.form-control {
-  width: 443px;
-  height: 54px;
-  background: rgba(33, 33, 33, 0.08);
-  border-radius: 4px 4px 0px 0px;
+.main-input {
+  display: flex;
+
+  p {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    border: .5px solid #ffffff82;
+    background: $bg-gradient-light-1;
+    border-right: transparent;
+    border-top: 1px;
+    border-bottom: 1.5px;
+    border-radius: 4px 0 0 4px;
+
+    svg {
+      font-size: xx-large;
+      color: $text-c1-primary;
+    }
+  }
+
+  .form-control {
+    width: 443px;
+    height: 54px;
+    color: $text-c0-white;
+    font-weight: 500;
+    background: $bg-gradient-light-1;
+    border-radius: 0 4px 4px 0;
+    margin-left: -1px;
+    border-bottom: transparent;
+    border-top: transparent;
+
+    &:focus {
+      background-color: unset;
+      border: unset;
+      border-color: #ffffff82;
+      box-shadow: unset;
+      color: $text-c0-white;
+    }
+
+    &::placeholder {
+      color: $text-c0-white;
+    }
+  }
 }
 
 .p-main {
@@ -143,6 +195,12 @@ h2 {
   margin-bottom: 10px;
 }
 
+.title-main {
+  font-size: 3rem;
+  color: $text-c0-white ;
+  margin-bottom: 20px;
+
+}
 
 .carousel-text {
   display: flex;
@@ -163,9 +221,11 @@ h2 {
   background-color: $bg-c0-primary;
   border-color: $text-c0-white;
 }
-.form-check-input:focus{
-box-shadow:none ;
+
+.form-check-input:focus {
+  box-shadow: none;
 }
+
 // end input
 
 

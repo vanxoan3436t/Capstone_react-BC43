@@ -81,12 +81,6 @@
   overflow: hidden;
   background: $bg-gradient-light-2;
 
-  h1 {
-    font-size: 3rem;
-    color: $text-c0-white ;
-    margin-bottom: 20px;
-
-  }
 
   .card-item {
     @media screen and (max-width:767.98px) {
@@ -176,7 +170,6 @@
     background: $bg-gradient-light-0;
     z-index: 1;
   }
-
   .bg-support {
     height: 50%;
     width: 100vw;

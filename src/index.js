@@ -5,7 +5,6 @@ import HomeTemplate from './Templates/HomeTemplate';
 import Login from './Pages/Login';
 import Search from './Pages/Search';
 import Detail from './Pages/Detail';
-import Register from './Pages/Register';
 import Profile from './Pages/Profile';
 import Carts from './Pages/Carts';
 import './assets/scss/index.scss'
@@ -30,12 +29,10 @@ root.render(
                 <Routes>
                     <Route path='' element={<HomeTemplate />}>
                         <Route index element={<Home />}></Route>
-                        <Route path='search' element={<Search />}></Route>
-                        <Route path='detail' >
+                        <Route path='search'  element={<Search />}></Route>
+                        <Route path='detail'>
                             <Route path=':id' element={<Detail />}></Route>
                         </Route>
-
-                        <Route path='register' element={<Register />}></Route>
                         <Route path='profile' element={<Profile />}></Route>
                         <Route path='carts' element={<Carts />}></Route>
                         <Route path='details' element={<Detail />}></Route>

@@ -88,25 +88,27 @@
 
   .carousel-home,
   .profile,
-  .profile-input p,
-  .profile-input input,
+  .main-input p,
+  .main-input input,
   .profile-body .profile-body-title h3,
   .carts,
-  .detail ,.bg-support  {
+  .detail ,.search-top {
     background: $bg-gradient-dark-1;
 
   }
-
+  .bg-support{
+ background: linear-gradient(to bottom, #bdc3c700, #2c3e50)!important;;
+  }
   .carousel-item-right span,
   .rating-button span,.btn-size{
     background: $bg-gradient-dark-2;
   }
 
   //color
-  .profile-input p svg,
-  .profile-input input,
+  .main-input p svg,
+  .main-input input,
   .gender span,
-  .footer h3,.footer li,.copy-right p,.rating-button button,.card,.detail-card-right {
+  .footer h3,.footer li,.copy-right p,.rating-button button,.card,.detail-card-right, .arrowDrop {
     color: $text-c0-white !important;
   }
 

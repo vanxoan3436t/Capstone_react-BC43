@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { USER_LOGIN, clearStorage, saveStorageJSON } from '../../util/config';
 import { history } from '../../index';
@@ -194,6 +194,12 @@ export default function Header() {
     </Menu>
   );
 
+const handleSubmitSearch =  (e) => {
+  //dung trong truong hop muốn seach luôn nhưng trong phần này thì chỉ cho qua trang seacrh rồi mới tìm kiếm
+  e.preventDefault();
+  history.push('/search')
+}
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' className={`header sticky-on ${scrollPosition > 64 ? 'sticky' : ''}`}
@@ -268,7 +274,10 @@ export default function Header() {
               <Kid />
             </Box>
             {/* Menu Tablet 900px */}
-            <Search>
+            <form action='#' >
+            <Search onClick={()=> {
+            history.push('/search')
+          }  }>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
@@ -277,6 +286,7 @@ export default function Header() {
                 inputProps={{ 'aria-label': 'search' }}
               />
             </Search>
+            </form >
             <Box sx={{ flexGrow: 1 }} />
             {/* dark light */}
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
