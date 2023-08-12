@@ -2,7 +2,8 @@ import axios from 'axios';
 import { history } from '../index';
 export const DOMAIN = 'https://shop.cyberlearn.vn';
 export const USER_LOGIN = 'userLogin';
-export const PRODUCT = 'product'
+export const PRODUCT = 'product';
+export const ARR_CARTS_LOCAL = 'arrCartsLocal'
 export const TOKEN_CYBERSOFT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCA0MyIsIkhldEhhblN0cmluZyI6IjA0LzExLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY5OTA1NjAwMDAwMCIsIm5iZiI6MTY2OTQ4MjAwMCwiZXhwIjoxNjk5MjAzNjAwfQ.7A1g8RqPPK_ttr9NYitsWT7Cbe11nz4qye-QxZ_b8fk';
 
 export const http = axios.create({
@@ -64,9 +65,9 @@ http.interceptors.response.use((res) => {
     return res;
 }, (err) => {
     //Xử lý lỗi cho api
-    if (err.response?.status === 401) {
-        alert('Đăng nhập để vào trang này !');
-        history.push('/login');
-    }
+    // if (err.response?.status === 401) {
+    //     alert('Đăng nhập để vào trang này !');
+    //     history.push('/login');
+    // }
     // return Promise.reject(err)
 });

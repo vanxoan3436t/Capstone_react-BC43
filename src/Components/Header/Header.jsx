@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { USER_LOGIN, clearStorage, saveStorageJSON } from '../../util/config';
+import { USER_LOGIN, clearStorage, getStorageJSON, saveStorageJSON } from '../../util/config';
 import { history } from '../../index';
 //Material
 import { styled, alpha } from '@mui/material/styles';
@@ -68,6 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 // END SEARCH
 export default function Header() {
+
   // start Login
   const { userLogin } = useSelector(state => state.userReducer);
   const renderLoginLink = () => {
@@ -199,7 +200,7 @@ const handleSubmitSearch =  (e) => {
   e.preventDefault();
   history.push('/search')
 }
-
+const  quantilyCarts  = useSelector(state => state.productReducer.quantilyCarts);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' className={`header sticky-on ${scrollPosition > 64 ? 'sticky' : ''}`}
@@ -306,7 +307,7 @@ const handleSubmitSearch =  (e) => {
                   //có thể làm đg ở trang nào thì tới trang đó luôn k về trang chủ
                 }}
               >
-                <Badge badgeContent={1} color="error">
+                <Badge badgeContent={`${1}`} color="error">
                   <AddShoppingCartIcon />
                 </Badge>
               </IconButton>

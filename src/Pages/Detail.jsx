@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom'
 import { history } from '../index';
-import { getDetailActionApi } from '../redux/reducer/productReducer';
+import { addCartsAction, addQuanlityAction, getDetailActionApi } from '../redux/reducer/productReducer';
+import { ARR_CARTS_LOCAL, saveStorageJSON } from '../util/config';
+
 
 export default function Detail() {
+    const arrCarts = useSelector(state => state.productReducer.arrCarts);
+    const proDetail = useSelector(state => state.productReducer.proDetail);
     const keyword = useParams()
-    const [quantily, setQuantily] = useState(1)
-    const  proDetail  = useSelector(state => state.productReducer.proDetail);
-
-
     const dispatch = useDispatch();
+    let newProDetail = { ...proDetail, numberCart: 1 ,priceLater : proDetail.price}
+    const [number, setNumber] = useState(1)
     const getDetailApi = () => {
         const action = getDetailActionApi(keyword.id);
-        console.log('action.payload', action.payload)
         dispatch(action);
-
     }
-
     const renderSizeProDetail = () => {
-        if (proDetail) {
-            return proDetail?.size?.map((value, index) => {
+        if (newProDetail) {
+            return newProDetail?.size?.map((value, index) => {
                 return <button className='btn btn-size' key={index} >{value}</button>
             })
         }
         return
     }
     const renderRelatedProducts = () => {
-        if (proDetail) {
-            return proDetail?.relatedProducts?.map((value, index) => {
+        if (newProDetail) {
+            return newProDetail?.relatedProducts?.map((value, index) => {
                 return <div key={index} className="col-12 col-md-6 col-lg-4 mb-5 card-item">
                     <div className="card" >
                         <img src={value.image} alt="..." />
@@ -48,55 +47,62 @@ export default function Detail() {
             })
         }
     }
+    const addToCart = () => {
+        newProDetail.numberCart = number
+        newProDetail.priceLater = number * newProDetail.priceLater
+        newProDetail = { ...newProDetail, numberCart: newProDetail.numberCart, priceLater : newProDetail.priceLater }
+        const action = addCartsAction(newProDetail)
+        dispatch(action)
+    }
 
     useEffect(() => {
         getDetailApi()
-    }, [keyword.id])
+        saveStorageJSON(ARR_CARTS_LOCAL, arrCarts)
+    }, [keyword.id, arrCarts, number])
 
     return (
         <div className="detail">
             <section className="detail-card container">
-                    <div className="detail-card-left" >
-                        <img src={proDetail.image} alt="..." />
+                <div className="detail-card-left" >
+                    <img src={newProDetail.image} alt="..." />
+                </div>
+                <div className="detail-card-right" >
+                    <h2> {newProDetail.name}</h2>
+                    <p>
+                        {newProDetail.description}
+                    </p>
+                    <h4>Available size</h4>
+                    <div className="shoes-size" >
+                        {renderSizeProDetail()}
                     </div>
-                    <div className="detail-card-right" >
-                        <h2> {proDetail.name}</h2>
-                        <p>
-                            {proDetail.description}
-                        </p>
-                        <h4>Available size</h4>
-                        <div className="shoes-size" >
-                            {renderSizeProDetail()}
-                        </div>
-                        <div className="price">
-                            <span>Price: <span>{proDetail.price * quantily}$</span></span>
-                        </div>
-                        <div className="shoes-quantity">
-                            <button className="btn btn-plus"  onClick={() => {
-                                setQuantily(quantily + 1);
-
-                                if (quantily === 10) {
-                                    alert('có tiền không mà mua nhiều thế')
-                                }
-                            }}>+</button>
-                            <span className='quantily-number'>{quantily}</span>
-                            <button className="btn btn-minus"  onClick={() => {
-
-                                setQuantily(quantily - 1);
-                                if (quantily < 1) {
-                                    alert('mua giúp shop 1 cái đi please!')
-                                    return setQuantily(1)
-                                }
-
-                            }}>-</button>
-                        </div>
-                        <button className="btn btn-add-to-cart" onClick={() => {
-                            // history.push('/carts')ss
-                        }}>
-                            <NavLink >Add to cart</NavLink>
-                        </button>
+                    <div className="price">
+                        <span>Price: <span>{newProDetail.price * number}$</span></span>
                     </div>
-            
+                    <div className="shoes-quantity">
+                        <button className="btn btn-plus" onClick={() => {
+                            setNumber(number + 1);
+                            if (number === 10) {
+                                alert('có tiền không mà mua nhiều thế')
+                            }
+                        }}>+</button>
+                        <span className='quantily-number'>{number}</span>
+                        <button className="btn btn-minus" onClick={() => {
+
+                            setNumber(number - 1);
+                            if (number < 1) {
+                                alert('mua giúp shop 1 cái đi please!')
+                                return setNumber(1)
+                            }
+
+                        }}>-</button>
+                    </div>
+                    <button className="btn btn-add-to-cart" onClick={() => {
+                        addToCart();
+                    }}>
+                        <NavLink >Add to cart</NavLink>
+                    </button>
+                </div>
+
 
             </section>
 

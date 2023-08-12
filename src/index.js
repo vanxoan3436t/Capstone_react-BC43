@@ -6,7 +6,7 @@ import Login from './Pages/Login';
 import Search from './Pages/Search';
 import Detail from './Pages/Detail';
 import Profile from './Pages/Profile';
-import Carts from './Pages/Carts';
+import Carts from './Pages/Carts/Carts';
 import './assets/scss/index.scss'
 
 //cấu hình redux
