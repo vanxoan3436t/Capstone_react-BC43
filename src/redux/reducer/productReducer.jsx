@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ARR_CARTS_LOCAL, clearStorage, getStorageJSON, httpNonAuth, saveStorageJSON } from '../../util/config';
+import { ARR_CARTS_LOCAL, TOTAL_CART, getStorageJSON, httpNonAuth, saveStorageJSON } from '../../util/config';
 
 
 const initStateDetail = () => {
@@ -28,9 +28,16 @@ const initArrCarts = () => {
     }
     return arrCarts
 }
-
+const initTotalCart = () => {
+    let totalCart = 0
+    if (getStorageJSON(TOTAL_CART)) {
+        totalCart = getStorageJSON(TOTAL_CART)
+    }
+    return totalCart
+}
 
 const initialState = {
+    totalCart: initTotalCart(),
     arrProduct: [],
     proDetail: initStateDetail(),
     arrCarts: initArrCarts(),
@@ -51,7 +58,6 @@ const productReducer = createSlice({
             const id = action.payload.id
             let arrCartsLocal = getStorageJSON(ARR_CARTS_LOCAL)
             let carts = arrCartsLocal.find((cart) => { return cart.id === id })
-
             if (carts === undefined) {//chưa có push vào redux cũng chính là push vào local
                 state.arrCarts.push(action.payload)
             } else {// có rồi thì chỉ thay đổi số lượng và giá bán tương đương với số lượng
@@ -70,12 +76,41 @@ const productReducer = createSlice({
                 state.arrCarts.splice(indexDel, 1)
                 saveStorageJSON(ARR_CARTS_LOCAL, state.arrCarts)
             }
+            // update thay đổi số lượng cart bị xóa cần up lại
+            let arrCartsLocal = getStorageJSON(ARR_CARTS_LOCAL)
+            if (arrCartsLocal) {
+                let updateCart = state.arrCarts.reduce((initialVal, curElem) => {
+                    let { numberCart } = curElem
+                    initialVal = initialVal + numberCart;
+                    return initialVal
+                }, 0)
+                state.totalCart = updateCart
+                saveStorageJSON(TOTAL_CART, state.totalCart)
+            }
         },
-
+        addTotalCartAction: (state, action) => {
+            state.totalCart = action.payload
+            saveStorageJSON(TOTAL_CART, state.totalCart)
+        },
+        editCartAction: (state, action) => {
+            console.log('action.payload-edit', action.payload)
+            const id = action.payload
+            // const numberCart = action.payload.numberCart
+            let indexEdit = state.arrCarts.findIndex(cart => cart.id === id)
+            if (indexEdit !== -1) {
+                // console.log('numberCart', numberCart)
+                let arrCartsLocal = getStorageJSON(ARR_CARTS_LOCAL)
+                let carts = arrCartsLocal.find((cart) => { return cart.id === id })
+                // state.arrCarts.numberCart = 
+                console.log('carts-local', carts)
+                
+                // saveStorageJSON(ARR_CARTS_LOCAL, state.arrCarts)
+            }
+        }
     }
 });
 
-export const { getAllProductAction, getDetailAction, addCartsAction, clearCartsAction, addQuanlityAction } = productReducer.actions
+export const { getAllProductAction, getDetailAction, addCartsAction, clearCartsAction, addQuanlityAction, addTotalCartAction, editCartAction } = productReducer.actions
 export default productReducer.reducer
 
 export const getAllProductActionApi = () => {

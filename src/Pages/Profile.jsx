@@ -1,7 +1,7 @@
 //rafce
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfileActionApi, profileActionApi } from '../redux/reducer/userReducer';
+import { getProfileActionApi } from '../redux/reducer/userReducer';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import MailIcon from '@mui/icons-material/Mail';
@@ -9,6 +9,8 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import swal from 'sweetalert';
+import { http } from '../util/config';
 
 const Profile = (props) => {
   const [classState, toggleClass] = useState(false);
@@ -21,18 +23,6 @@ const Profile = (props) => {
     dispatch(action);
   }
 
-  const postUpdate = (values) => {
-    //dựa theo token
-    const action = profileActionApi(values);
-    dispatch(action)
-    console.log('action', action)
-  }
-
-  useEffect(() => {
-    getProfileApi();
-  }, [])
-
-
   const profileFrm = useFormik({
     initialValues: {
       email: ``,
@@ -43,12 +33,47 @@ const Profile = (props) => {
 
     }, validationSchema: yup.object().shape({
       email: yup.string().required('email cannot be blank!').email('Email is invalid !'),
-      phone: yup.string().required('phone cannot be blank and just use numbers').matches(/^\d+$/, 'phone is numbers').min(9, '9 number').max(10, '10 number'),
-      name: yup.string().required('name cannot be blank'),
-      password: yup.string().required('password cannot be blank!').min(5, '5 - 32 characters').max(32, '5 - 32 character')
-    })
+      phone: yup.string().required('phone cannot be blank and just use numbers!').matches(/^\d+$/, 'phone is numbers!').min(9, '9 number!').max(10, '10 number!'),
+      name: yup.string()
+        .required('Name cannot be blank!')
+        .matches(/^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, 'Chỉ nhập kí tự chữ!'),
+      password: yup.string().required('password cannot be blank!').min(5, '5 - 32 characters!').max(32, '5 - 32 character!')
+    }), onSubmit: async (values) => {
+      try {
+        const res = await http.post(`/api/Users/updateProfile`, values);
+        console.log('res.data', res)
+        // thành công thì lưu vào local 
+        if (res.status === 200) {
+          if (res.data?.statusCode === 400) {
+            swal({
+              title: res.data?.message,
+              icon: 'warning',
+              timer: 2000,
+            });
+            return
+          }
+          swal({
+            title: res.data.content,
+            icon: 'success',
+            timer: 1500,
+          });
+
+          getProfileApi()
+        }
+      } catch (err) {
+        swal({
+          title: err.response.data?.content,
+          icon: 'warning',
+          timer: 2000,
+        });
+      }
+    }
 
   })
+
+  useEffect(() => {
+    getProfileApi();
+  }, [])
   return (
     <form className='profile container-fluid' onSubmit={profileFrm.handleSubmit}>
       <h1 className=''>Profile</h1>
@@ -64,17 +89,17 @@ const Profile = (props) => {
                 <div className="form-group">
                   <div className='main-input'>
                     <p><MailIcon /></p>
-                    <input className='form-control' value={profileFrm?.email} type="email" placeholder=': Email' name='email' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
+                    <input className='form-control' value={profileFrm?.email} type="email" placeholder='Email mặc định không thay đổi' name='email' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   </div>
-                  {profileFrm.errors.email && <p className='p-err text-danger'>{profileFrm.errors.email}</p>}
+                  {profileFrm.errors.email && <p className='p-err'>{profileFrm.errors.email}</p>}
 
                 </div>
                 <div className="form-group">
                   <div className='main-input'>
                     <p> <PhoneIcon /></p>
-                    <input className='form-control' value={profileFrm?.phone} type="number" placeholder=': Phone' name='phone' onBlur={profileFrm.handleBlur} onInput={profileFrm.handleChange} />
+                    <input className='form-control' value={profileFrm?.phone} type="phone" placeholder=': Phone' name='phone' onBlur={profileFrm.handleBlur} onInput={profileFrm.handleChange} />
                   </div>
-                  {profileFrm.errors.phone && <p className='p-err text-danger'>{profileFrm.errors.phone}</p>}
+                  {profileFrm.errors.phone && <p className='p-err'>{profileFrm.errors.phone}</p>}
                 </div>
               </div>
               <div className="col-md-12 col-lg-6">
@@ -84,7 +109,7 @@ const Profile = (props) => {
                     <p><PersonIcon /></p>
                     <input className='form-control' value={profileFrm?.name} type="text" placeholder=': Name' name='name' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   </div>
-                  {profileFrm.errors.name && <p className='p-err text-danger'>{profileFrm.errors.name}</p>}
+                  {profileFrm.errors.name && <p className='p-err'>{profileFrm.errors.name}</p>}
                 </div>
 
                 <div className="form-group">
@@ -92,7 +117,7 @@ const Profile = (props) => {
                     <p><LockIcon /></p>
                     <input className='form-control' value={profileFrm?.password} type="password" placeholder=': password' name='password' onInput={profileFrm.handleChange} onBlur={profileFrm.handleBlur} />
                   </div>
-                  {profileFrm.errors.password && <p className='p-err text-danger'>{profileFrm.errors.password}</p>}
+                  {profileFrm.errors.password && <p className='p-err'>{profileFrm.errors.password}</p>}
                 </div>
 
                 <div className="form-group gender d-flex justify-content-between">

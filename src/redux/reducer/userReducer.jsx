@@ -1,6 +1,6 @@
 //rxslice
 import { createSlice } from '@reduxjs/toolkit'
-import { http, getStorageJSON, saveStorageJSON, USER_LOGIN, USER_UPDATE } from '../../util/config';
+import { http, getStorageJSON, saveStorageJSON, USER_LOGIN } from '../../util/config';
 import { history } from '../../index';
 import swal from 'sweetalert';
 
@@ -18,16 +18,8 @@ const initStateUserLogin = () => {
 
 const initialState = {
   userLogin: initStateUserLogin(),
-  userProfile: {
-
-  },
-  userUpdate: {
-    email: '',
-    password: '',
-    name: '',
-    gender: '',
-    phone: '',
-  }
+  userProfile: {},
+ 
 }
 
 const userReducer = createSlice({
@@ -40,14 +32,11 @@ const userReducer = createSlice({
     }, getProfileAction: (state, action) => {
       const userProfile = action.payload;
       state.userProfile = userProfile;
-    }, postUpdate: (state, action) => {
-      const userUpdate = action.payload;
-      state.userUpdate = userUpdate;
-    }
+    },
   }
 });
 
-export const { loginAction, getProfileAction, postUpdate} = userReducer.actions
+export const { loginAction, getProfileAction } = userReducer.actions
 
 export default userReducer.reducer
 
@@ -60,48 +49,35 @@ export const loginActionApi = (userLogin) => {
       dispatch(action);
       saveStorageJSON(USER_LOGIN, res.data.content)
       history.push('/')
-    } catch (err) { 
-        swal({
-          title:err.response?.data?.message,
-          icon:'warning',
-          timer:2000,
-        });
+    } catch (err) {
+      swal({
+        title: err.response?.data?.message,
+        icon: 'warning',
+        timer: 2000,
+      });
     }
   }
 }
 
-export const profileActionApi = (userUpdate) => {
-  return async (dispatch) => {
-    try {
-      const res = await http.post(`/api/Users/updateProfile`, userUpdate);
-      const action = postUpdate(res.data.content);
-      dispatch(action);
-      // thành công thì lưu vào local 
-      saveStorageJSON(USER_LOGIN, res.data.content)
-    } catch (err) {
-        swal({
-          title:err.response.data?.message,
-          icon:'success',
-          timer:2000,
-        });
-      
-    }
-  }
-}
 
 export const getProfileActionApi = () => {
   return async (dispatch, getState) => {
+    try {
+      const accessToken = getState().userReducer.userLogin.accessToken;
+      //Gọi api getprofile
+      const res = await http.post(`/api/Users/getProfile`, {}, {
+        headers: {// headers (tham số thứ 3)
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
 
-    const accessToken = getState().userReducer.userLogin.accessToken;
-    //Gọi api getprofile
-    const res = await http.post(`/api/Users/getProfile`, {}, {
-      headers: {// headers (tham số thứ 3)
-        Authorization: `Bearer ${accessToken}`
+      const action = getProfileAction(res.data.content);
+      dispatch(action);
+    } catch (err) {
+      if (err.response?.status === 401) {
+        alert('Đăng nhập để vào trang này !');
+        history.push('/login');
       }
-    });
-
-    const action = getProfileAction(res);
-    dispatch(action);
-
+    }
   }
 }

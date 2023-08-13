@@ -66,8 +66,13 @@ h2 {
   line-height: $lh-c4;
 }
 
-.custom_feature h3 {
+.p-err{
+  font-weight: 500;
+  color: rgb(160, 35, 30);
+  font-size: 17px;
+}
 
+.custom_feature h3 {
   background: linear-gradient(180deg, #F21299 0%, #1B02B5 100%);
   padding: 10px 0px;
 }

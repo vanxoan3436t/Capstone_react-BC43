@@ -1,17 +1,17 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom'
 import { history } from '../index';
-import { addCartsAction, addQuanlityAction, getDetailActionApi } from '../redux/reducer/productReducer';
-import { ARR_CARTS_LOCAL, saveStorageJSON } from '../util/config';
-
+import { addCartsAction, addTotalCartAction, getDetailActionApi } from '../redux/reducer/productReducer';
+import { ARR_CARTS_LOCAL, TOTAL_CART, getStorageJSON, saveStorageJSON } from '../util/config';
 
 export default function Detail() {
+    // const totalCart = useSelector(state => state.productReducer.totalCart);
     const arrCarts = useSelector(state => state.productReducer.arrCarts);
     const proDetail = useSelector(state => state.productReducer.proDetail);
     const keyword = useParams()
     const dispatch = useDispatch();
-    let newProDetail = { ...proDetail, numberCart: 1 ,priceLater : proDetail.price}
+    let newProDetail = { ...proDetail, numberCart: 1, priceLater: proDetail.price }
     const [number, setNumber] = useState(1)
     const getDetailApi = () => {
         const action = getDetailActionApi(keyword.id);
@@ -29,7 +29,9 @@ export default function Detail() {
         if (newProDetail) {
             return newProDetail?.relatedProducts?.map((value, index) => {
                 return <div key={index} className="col-12 col-md-6 col-lg-4 mb-5 card-item">
-                    <div className="card" >
+                    <div className="card" style={{cursor:'pointer'}} onClick={() => {
+                        history.push(`/detail/${value.id}`)
+                    }}>
                         <img src={value.image} alt="..." />
                         <div className="card-body">
                             <h5>{value.name}</h5>
@@ -47,18 +49,34 @@ export default function Detail() {
             })
         }
     }
+
+    const addTotalCart = () => {
+        let arrCartsLocal = getStorageJSON(ARR_CARTS_LOCAL)
+        let updateCart = arrCartsLocal.reduce((initialVal, curElem) => {
+            let { numberCart } = curElem
+            initialVal = initialVal + numberCart;
+            return initialVal
+        }, 0)
+        const action = addTotalCartAction(updateCart)
+        dispatch(action)
+
+    }
+
     const addToCart = () => {
         newProDetail.numberCart = number
         newProDetail.priceLater = number * newProDetail.priceLater
-        newProDetail = { ...newProDetail, numberCart: newProDetail.numberCart, priceLater : newProDetail.priceLater }
+        newProDetail = { ...newProDetail, numberCart: newProDetail.numberCart, priceLater: newProDetail.priceLater }
         const action = addCartsAction(newProDetail)
         dispatch(action)
+        saveStorageJSON(TOTAL_CART, action.payload.numberCart)
     }
 
     useEffect(() => {
         getDetailApi()
         saveStorageJSON(ARR_CARTS_LOCAL, arrCarts)
-    }, [keyword.id, arrCarts, number])
+        addTotalCart()
+
+    }, [keyword.id, arrCarts, number])//totalCart
 
     return (
         <div className="detail">

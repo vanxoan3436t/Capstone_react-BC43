@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProfileActionApi } from '../../redux/reducer/userReducer';
 import { useEffect } from 'react';
-import { clearCartsAction } from '../../redux/reducer/productReducer';
+import { clearCartsAction, editCartAction } from '../../redux/reducer/productReducer';
 import { ARR_CARTS_LOCAL, saveStorageJSON } from '../../util/config';
 
 const Carts = (props) => {
   const arrCarts = useSelector(state => state.productReducer.arrCarts);
+  const totalCart = useSelector(state => state.productReducer.totalCart);
   const [quantily, setQuantily] = useState(0)
   const dispatch = useDispatch();
   const getProfileApi = () => {
@@ -16,6 +17,12 @@ const Carts = (props) => {
 
   const deleteCart = (id) => {
     const action = clearCartsAction(id)
+    dispatch(action)
+  }
+
+  const editCart = (id) => {
+    // let cartEdit = arrCarts.find(cart => cart.id === id)
+    const action = editCartAction(id)
     dispatch(action)
   }
   const renderCarts = () => {
@@ -45,10 +52,15 @@ const Carts = (props) => {
               <th>{item.price}</th>
               <th>
                 <button className='btn btn-plus' onClick={() => {
-              
+                  let minus = 1;
+                  editCart(item.id)
+
                 }}><i className='fa fa-plus'></i></button>
                 <span className='quantily-number'>{item.numberCart}</span>
-                <button className='btn btn-minus'><i className='fa fa-minus'></i></button>
+                <button className='btn btn-minus' onClick={() => {
+                  let minus = -1;
+                  editCart(item.id)
+                }}><i className='fa fa-minus'></i></button>
               </th>
               <th>{item.priceLater}</th>
               <th>
@@ -71,7 +83,8 @@ const Carts = (props) => {
   useEffect(() => {
     getProfileApi();
     saveStorageJSON(ARR_CARTS_LOCAL, arrCarts)
-  }, [arrCarts, quantily])
+
+  }, [arrCarts])//totalCart
 
   return (
     <div className='carts container-fluid'>

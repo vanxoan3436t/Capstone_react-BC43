@@ -7,40 +7,42 @@ import { Container } from '@mui/material';
 
 function ListCard() {
   const { arrProduct } = useSelector(state => state.productReducer);
-	const dispatch = useDispatch();
-	const getProductApi = () => {
-		const action = getAllProductActionApi();
-		dispatch(action);
-	}
+  const dispatch = useDispatch();
+  const getProductApi = () => {
+    const action = getAllProductActionApi();
+    dispatch(action);
+  }
 
-	useEffect(() => {
-		getProductApi();
-	}, [])
+  useEffect(() => {
+    getProductApi();
+  }, [])
   return (<div className='container-fluid list-product'>
     <div className='row '>
       <h1 className='title-main'>Product Future</h1>
-    {arrProduct?.map((item) => {
-      return <div className='col-12 col-md-6 col-lg-4 col-xl-3 mb-5 card-item' key={item.id}>
-        <div className="card">
-          <img src={item.image} alt="..." className='card-img' />
-          <div className="card-body">
-            <h5>{item.name}</h5>
-            <p>{item.description.length > 50 ? item.description.substr(0, 50) + '...' : item.description}</p>
-            <div className='rating-button'>
-              <button className='btn' onClick={() => {
-                history.push(`/detail/${item.id}`)
-              }}>
+      {arrProduct?.map((item) => {
+        return <div className='col-12 col-md-6 col-lg-4 col-xl-3 mb-5 card-item' key={item.id}>
+          <div className="card" style={{ cursor: 'pointer' }} onClick={() => {
+            history.push(`/detail/${item.id}`)
+          }}>
+            <img src={item.image} alt="..." className='card-img' />
+            <div className="card-body">
+              <h5>{item.name}</h5>
+              <p>{item.description.length > 50 ? item.description.substr(0, 50) + '...' : item.description}</p>
+              <div className='rating-button'>
+                <button className='btn' onClick={() => {
+                  history.push(`/detail/${item.id}`)
+                }}>
 
-                Buy now </button>
-              <span className='price'> {item.price}$</span>
+                  Buy now </button>
+                <span className='price'> {item.price}$</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    })}
+      })}
 
-  </div>
-  <div className="bg-support"></div>
+    </div>
+    <div className="bg-support"></div>
   </div>
   )
 }

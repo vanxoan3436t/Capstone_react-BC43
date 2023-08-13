@@ -88,7 +88,7 @@ export default function Login() {
           <h2 className='animation' >Login</h2>
           <form action="#" onSubmit={frmLogin.handleSubmit}>
             <div className="input-box animation">
-              <input type="text" required name="email" onInput={frmLogin.handleChange} onBlur={frmLogin.handleBlur} />
+              <input type="email" required name="email" onInput={frmLogin.handleChange} onBlur={frmLogin.handleBlur} />
               {frmLogin.errors.email && <p className='p-err text-danger'>{frmLogin.errors.email}</p>}
               <label htmlFor="">Email</label>
               <i><MailOutlineIcon /></i>
@@ -119,7 +119,7 @@ export default function Login() {
           <h2 className='animation'>Sign up</h2>
           <form action="#" onSubmit={registerFrm.handleSubmit}>
             <div className="input-box animation">
-              <input type="text" required name='email' value={registerFrm.email} onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur} />
+              <input type="email" required name='email' value={registerFrm.email} onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur} />
               {registerFrm.errors.email && <p className='p-err text-danger'>{registerFrm.errors.email}</p>}
               <label htmlFor="">Email</label>
               <i><MailOutlineIcon /></i>
@@ -137,7 +137,7 @@ export default function Login() {
               <i><PersonOutlineIcon /></i>
             </div>
             <div className="input-box animation">
-              <input type="text" required name='phone' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur} />
+              <input type="phone" required name='phone' onInput={registerFrm.handleChange} onBlur={registerFrm.handleBlur} />
               {registerFrm.errors.phone && <p className='p-err text-danger'>{registerFrm.errors.phone}</p>}
               <label htmlFor="">Phone</label>
               <i><PhoneAndroidIcon /></i>

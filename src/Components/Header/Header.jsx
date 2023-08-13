@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { USER_LOGIN, clearStorage, getStorageJSON, saveStorageJSON } from '../../util/config';
+import { ARR_CARTS_LOCAL, USER_LOGIN, clearStorage, getStorageJSON, saveStorageJSON } from '../../util/config';
 import { history } from '../../index';
 //Material
 import { styled, alpha } from '@mui/material/styles';
@@ -25,7 +25,7 @@ import HomeMenu from './Menu/HomeMenu';
 import ModeSelect from '../ModeSelect/ModeSelect';
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { NavLink, useParams, useSearchParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // START SEARCH
 const Search = styled('div')(({ theme }) => ({
@@ -68,7 +68,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 // END SEARCH
 export default function Header() {
-
+  // render total cart shopping Cart
+  const totalCart = useSelector(state => state.productReducer.totalCart);
   // start Login
   const { userLogin } = useSelector(state => state.userReducer);
   const renderLoginLink = () => {
@@ -92,7 +93,7 @@ export default function Header() {
               onClick={() => {
                 clearStorage(USER_LOGIN);
                 window.location.reload();
-                history.push('/')
+                // history.push('/')
               }}
               sx={{
                 position: { md: 'absolute', xs: 'unset' },
@@ -119,20 +120,20 @@ export default function Header() {
     }}>Đăng Nhập</Button>
   }
   // end Login
-
   // header fix
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollPosition(position);
   };
-
   useEffect(() => {
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.addEventListener('scroll', handleScroll);
     }
-  }, [])
+
+  }, [totalCart])
   // end header fix
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl)
@@ -195,12 +196,11 @@ export default function Header() {
     </Menu>
   );
 
-const handleSubmitSearch =  (e) => {
-  //dung trong truong hop muốn seach luôn nhưng trong phần này thì chỉ cho qua trang seacrh rồi mới tìm kiếm
-  e.preventDefault();
-  history.push('/search')
-}
-const  quantilyCarts  = useSelector(state => state.productReducer.quantilyCarts);
+  const handleSubmitSearch = (e) => {
+    //dung trong truong hop muốn seach luôn nhưng trong phần này thì chỉ cho qua trang seacrh rồi mới tìm kiếm
+    e.preventDefault();
+    history.push('/search')
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static' className={`header sticky-on ${scrollPosition > 64 ? 'sticky' : ''}`}
@@ -276,17 +276,17 @@ const  quantilyCarts  = useSelector(state => state.productReducer.quantilyCarts)
             </Box>
             {/* Menu Tablet 900px */}
             <form action='#' >
-            <Search onClick={()=> {
-            history.push('/search')
-          }  }>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </Search>
+              <Search onClick={() => {
+                history.push('/search')
+              }}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
             </form >
             <Box sx={{ flexGrow: 1 }} />
             {/* dark light */}
@@ -307,7 +307,7 @@ const  quantilyCarts  = useSelector(state => state.productReducer.quantilyCarts)
                   //có thể làm đg ở trang nào thì tới trang đó luôn k về trang chủ
                 }}
               >
-                <Badge badgeContent={`${1}`} color="error">
+                <Badge badgeContent={totalCart} color="error">
                   <AddShoppingCartIcon />
                 </Badge>
               </IconButton>
