@@ -1,5 +1,5 @@
 //rxslice
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { http, getStorageJSON, saveStorageJSON, USER_LOGIN } from '../../util/config';
 import { history } from '../../index';
 import swal from 'sweetalert';
@@ -19,7 +19,7 @@ const initStateUserLogin = () => {
 const initialState = {
   userLogin: initStateUserLogin(),
   userProfile: {},
- 
+
 }
 
 const userReducer = createSlice({
@@ -58,7 +58,19 @@ export const loginActionApi = (userLogin) => {
     }
   }
 }
-
+export const loginAsyncActionApi = createAsyncThunk('loginAsyncActionApi', async (userLogin) => {
+  try {
+    const result = await http.post(`/api/Users/signin`,userLogin);
+    // const action = loginAction(result.data.content);
+ 
+    saveStorageJSON(USER_LOGIN, result.data.content)
+    history.push('/')
+   
+    return result.data
+  } catch (err) {
+   
+  }
+});
 
 export const getProfileActionApi = () => {
   return async (dispatch, getState) => {

@@ -162,6 +162,10 @@
         .profile-body-title {
             display: flex;
 
+            @media screen and (max-width: 576px) {
+                margin-left: 4vw;
+            }
+
             h3 {
 
                 width: 277px;
@@ -169,6 +173,11 @@
                 border-top: none;
                 margin-bottom: 75px;
                 background: $bg-gradient-light-1 ;
+
+                @media screen and (max-width: 576px) {
+                    width: 43vw;
+                    margin-bottom: 15px;
+                }
 
                 span {
                     display: inline-block;
@@ -178,23 +187,36 @@
                     cursor: pointer;
                     @include text($fs-32, $fw-medium, $text-c0-white, $lh-c7);
 
-                    &.active {
+                    &.show-element {
                         color: $text-c1-primary;
+                    }
+                    @media screen and (max-width: 414px) {
+                      font-size: 24px;
+                      margin-left: 5px;
                     }
                 }
 
                 &:nth-child(2) {
                     width: 320px;
 
+                    @media screen and (max-width: 576px) {
+                        width: 43vw;
+                    }
+
                     span {
                         width: 141px;
                     }
                 }
+
             }
         }
 
         .profile-table {
             padding-bottom: 50px;
+
+            @media screen and (min-width:0px) and (max-width:652px) {
+                display: none;
+            }
 
             table {
                 margin-bottom: 0;
@@ -220,6 +242,21 @@
 
                 &>tbody>tr:hover>* {
                     background: #0000003d;
+                    color: $text-c0-white;
+                }
+            }
+        }
+
+        .profile-product-mobile {
+            display: none;
+            .profile-product-item {
+                padding: 20px 0px;
+                border-bottom: 1px solid $text-c0-white;
+                display: flex;
+
+                .profile-product-mobile-left {
+
+                    margin-left: 20px;
                     color: $text-c0-white;
                 }
             }

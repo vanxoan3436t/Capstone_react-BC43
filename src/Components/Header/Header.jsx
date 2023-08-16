@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { ARR_CARTS_LOCAL, USER_LOGIN, clearStorage, getStorageJSON, saveStorageJSON } from '../../util/config';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { USER_LOGIN, clearStorage } from '../../util/config';
 import { history } from '../../index';
 //Material
 import { styled, alpha } from '@mui/material/styles';
@@ -26,6 +26,7 @@ import ModeSelect from '../ModeSelect/ModeSelect';
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { NavLink } from 'react-router-dom';
+import { addTotalCartAction } from '../../redux/reducer/productReducer';
 
 // START SEARCH
 const Search = styled('div')(({ theme }) => ({
@@ -68,7 +69,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 // END SEARCH
 export default function Header() {
+  const dispatch = useDispatch()
+
   // render total cart shopping Cart
+  const arrCarts = useSelector(state => state.productReducer.arrCarts);
   const totalCart = useSelector(state => state.productReducer.totalCart);
   // start Login
   const { userLogin } = useSelector(state => state.userReducer);
@@ -78,12 +82,14 @@ export default function Header() {
         <Box sx={{
           flexGrow: 0, position: 'relative',
         }}>
-          <Box sx={{
+          <Box className='box-login' sx={{
+            display: 'flex',
+            alignItems: 'center',
             p: 0,
             '&:hover .MuiSvgIcon-root': {
               opacity: 1,
               right: { md: '-28px', xs: '-44px' },
-              transition: 'all .5s'
+              transition: 'all .5s',
             },
           }}>
             <Avatar onClick={() => {
@@ -100,10 +106,12 @@ export default function Header() {
                 top: '8px', right: 0,
                 opacity: { md: 0, xs: 1 },
                 color: '#d32f2f',
+                // color:'white',
                 cursor: 'pointer',
                 transition: 'all .5s',
                 translate: { md: 'unset', xs: '22px 0' }
               }} />
+
           </Box>
         </Box>
       </Box >
@@ -127,13 +135,14 @@ export default function Header() {
     setScrollPosition(position);
   };
   useEffect(() => {
+    dispatch(addTotalCartAction())
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.addEventListener('scroll', handleScroll);
     }
 
-  }, [totalCart])
+  }, [totalCart, arrCarts])
   // end header fix
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl)
@@ -178,12 +187,13 @@ export default function Header() {
           size="large"
           aria-label="show 1 new notifications"
           color="inherit"
+
         >
-          <Badge badgeContent={1} color="error">
-            <AddShoppingCartIcon />
+          <Badge badgeContent={totalCart} color="error">
+            <AddShoppingCartIcon onClick={() => { history.push('/carts') }} />
           </Badge>
         </IconButton>
-        <p>card</p>
+        <p>Card</p>
       </MenuItem>
 
       <MenuItem sx={{ display: { xs: 'block', sm: 'none' } }}>
@@ -296,7 +306,6 @@ export default function Header() {
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <IconButton
                 size="large"
-                aria-label="show 17 new notifications"
                 color="inherit"
                 sx={{
                   margin: '0 5px',
