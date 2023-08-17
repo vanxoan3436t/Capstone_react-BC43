@@ -193,28 +193,35 @@ const Profile = (props) => {
           </div>
 
         </div>
-        <div className={`profile-product-mobile ${!classState ? 'show-element' : ''}`}>
-          <div className="profile-product-item">
-            <img style={{ width: '100px' }} src={'https://i.pravatar.cc?u=63'} alt="..." />
-            <div className="profile-product-mobile-left">
-              <h5> Name Name Name Name</h5>
-              <p className='price'>Price: 1000$ { }</p>
-              <span>Total: 1000${ }</span>
-              <p>Quantily: 1</p>
+         <div className='profile-product-mobile'>
+          <div className={`profile-product-item d-none ${!classState ? 'show-element' : ''}`}>
+            <div className="d-flex">
+              <img style={{ width: '100px' }} src={'https://i.pravatar.cc?u=63'} alt="..." />
+              <div className="profile-product-mobile-left">
+                <h5> Name Name Name Name</h5>
+                <p className='price'>Price: 1000$ { }</p>
+                <span>Total: 1000${ }</span>
+                <p>Quantily: 1</p>
+              </div>
             </div>
           </div>
-          <div className="profile-product-item">
-            <img style={{ width: '100px' }} src={'https://i.pravatar.cc?u=63'} alt="..." />
-            <div className="profile-product-mobile-left">
-              <h5> Name Name Name Name</h5>
-              <p className='price'>Price: 1000$ { }</p>
-              <span>Total: 1000${ }</span>
-              <p>Quantily: 1</p>
+          <div className={`profile-product-item d-none ${!classState ? 'show-element' : ''}`}>
+            <div className="d-flex">
+              <img style={{ width: '100px' }} src={'https://i.pravatar.cc?u=63'} alt="..." />
+              <div className="profile-product-mobile-left">
+                <h5> Name Name Name Name</h5>
+                <p className='price'>Price: 1000$ { }</p>
+                <span>Total: 1000${ }</span>
+                <p>Quantily: 1</p>
+              </div>
             </div>
           </div>
+
         </div>
-        <div className={`d-none ${classState ? 'show-element' : ''}`}>
-          <p className='text-center text-white fs-5'>Hoàng Văn Soạn</p>
+        <div >
+          <div className={`d-none ${classState ? 'show-element' : ''}`}>
+            <p className='text-center text-white fs-5'>Hoàng Văn Soạn</p>
+          </div>
         </div>
       </div>
     </form>
