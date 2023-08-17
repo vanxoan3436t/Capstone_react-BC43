@@ -248,7 +248,9 @@
         }
 
         .profile-product-mobile {
-            display: none;
+         @media screen and (min-width:651.98px){
+        display: none;
+       }
             .profile-product-item {
                 padding: 20px 0px;
                 border-bottom: 1px solid $text-c0-white;
